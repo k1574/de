@@ -1,0 +1,35 @@
+NAME = mk
+VERSION = 7
+
+EXE=${HOME}/exe
+SHR=${HOME}/shr
+MAN=${SHR}/man
+
+OBJTYPE     = 386
+#OBJTYPE     = arm
+#OBJTYPE     = x86_64
+#OBJTYPE     = sun4u
+
+# It's required to compile. Mostly you can just clone both repos in one directory and compile "mk"
+# without changing anything here.
+PATH9 = ../lib9
+
+CC = tcc
+LD = ${CC}
+STRIP = strip
+
+# Do not edit after this line if you don't understand what you are doing.
+DOTINC = -I.
+INC9 = -I${PATH9}/ -I${PATH9}/sec
+
+MLIB = -lm
+LIB9 = -L${PATH9} -l9
+
+INC = ${DOTINC} ${INC9}
+LIB = ${LIB9} ${MLIB}
+
+CPPFLAGS = ${INC} -DPLAN9PORT \
+	-D_DEFAULT_SOURCE
+CFLAGS =
+LDFLAGS  = ${LD_STATIC_FLAG}
+

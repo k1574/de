@@ -1,0 +1,17 @@
+CC = tcc
+LD = $CC
+STRIP = strip
+NAME = ed
+# Path to "lib9".
+PATH9 = ../lib9
+LOCAL = $HOME/local
+BIN = $LOCAL/bin
+SHR = $LOCAL/shr
+MAN = $SHR/man
+INC9 = -I$PATH9
+INC = $INC9
+LIB9 = -L$PATH9 -l9
+LIB = $LIB9
+CPPFLAGS = $INC -D_DEFAULT_SOURCE
+CFLAGS =
+LDFLAGS = $LD_STATIC_FLAG

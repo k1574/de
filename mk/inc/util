@@ -1,0 +1,9 @@
+# Standard utilites to compile.
+CC = tcc
+LD = $CC
+STRIP = strip
+AR = ar
+YACC = yacc
+YACC9 = ../yacc/9yacc
+LEX = lex
+

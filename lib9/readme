@@ -1,0 +1,13 @@
+# lib9
+Plan9 OS standard library.
+## Build
+Building gives you one static library.
+### make
+``
+	% make
+``
+### mk
+``
+	% mk
+``
+

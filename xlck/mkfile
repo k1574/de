@@ -1,0 +1,13 @@
+<mkconfig
+<../mk/inc/cbuild
+install :V: $TGT
+	mkdir -p $MAN/1 $EXE
+	sup cp -f $TGT $EXE/
+	sup chmod 0755 $EXE/$TGT
+	sup chmod u+s $EXE/$TGT
+	cp man $MAN/1/$NAME
+uninstall :V: 
+	rm -f $ROOT/bin/$TGT
+clean :V:
+	rm -rf $TGT *.o 
+

@@ -1,0 +1,20 @@
+<../mk/inc/path
+<../mk/inc/inclib
+<../mk/inc/util
+NAME = xlck
+# Version.
+VERSION = 1.4
+<../mk/inc/path
+# *BSD.
+#-DHAVE_SHADOW_H
+# NetBSD.
+#-D_BSD_SOURCE -D_NETBSD_SOURCE
+INC = $DOTINC $USRINC $X11INC
+LIB = $USRLIB $CLIB $CRYPTLIB \
+	$X11LIB $XEXTLIB $XRLIB
+CPPFLAGS = $INC \
+	-DVERSION=\"$VERSION\" \
+	-D_DEFAULT_SOURCE -DHAVE_SHADOW_H
+CFLAGS = $CPPFLAGS
+LDFLAGS = $LD_STATIC_FLAG -s \
+	$LIB

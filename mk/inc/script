@@ -1,0 +1,8 @@
+# Standard installation for scripts.
+MKSHELL=rc
+install:V:
+	for(i in $NAME){
+		cp $i $EXE/$i
+		chmod 0755 $EXE/$i
+	}
+

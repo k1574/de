@@ -1,0 +1,15 @@
+<../mk/inc/path
+<../mk/inc/util
+<../mk/inc/inclib
+NAME = xtrm
+SCRIPT = xmux xttt
+VERSION = 0.8.3
+LIB = $X11LIB $FCLIB $FTLIB $UTILLIB $XFTLIB
+INC = $USRINC $X11INC $FCINC $FTINC
+CPPFLAGS = $INC \
+	-DVERSION=\"$VERSION\"\
+	#-D_BSD_SOURCE\
+	-D_XOPEN_SOURCE=600
+CFLAGS = $CPPFLAGS
+LDFLAGS = $LD_STATIC_FLAG $LIB
+

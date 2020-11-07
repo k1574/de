@@ -1,0 +1,29 @@
+#!/bin/env rc
+# Script to run tmuxed xtrm.
+
+args = ()
+leave = 0
+while(~ $leave 0){
+	switch($1){
+	case -*
+		switch($1){
+			case -c -f -g -n -o -T -t -w -l
+				args = ($args $1 $2)
+				if($#1 ~ 2)
+					shift
+				if not {shift;shift}
+			case -e
+				shift; leave = 1
+			case *
+				args = ($args $1)
+				shift
+		}
+	case *
+		leave = 1
+	}
+}
+
+echo $args
+echo $*
+exec xtrm $args -e tmux new-session $*
+

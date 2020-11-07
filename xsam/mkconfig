@@ -1,0 +1,13 @@
+# Mac OS X users need to add -D_DARWIN_C_SOURCE here.
+STD = -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=500
+#-std=c99
+
+# Default remote shell.
+RXPATH=/usr/bin/ssh
+
+# Directories to make by default.
+DIRS = libXg libframe sam samterm shr
+
+CC = cc
+LD = $CC
+

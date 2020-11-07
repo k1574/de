@@ -1,0 +1,9 @@
+<../mkconfig
+<../../mk/inc/inclib
+<../../mk/inc/util
+NAME = libframe
+DDINC = -I../inc
+INC = $INC $DDINC $FTINC
+CPPFLAGS = $STD $INC
+CFLAGS = $CPPFLAGS
+ARFLAGS = r

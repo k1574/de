@@ -1,0 +1,26 @@
+# The most popular compiler configuration values for my programs.
+USR = /usr
+USRINC = -I$USR/include
+USRLIB = $USR/lib
+X11 = $USR/X11R6
+X11INC = -I$X11/include
+X11LIB = -L$X11/lib -lX11
+XFTLIB = -lXft
+FTINC = $USRINC/freetype2
+FTLIB = -lfreetype
+FCINC = 
+FCLIB = -lfontconfig
+MLIB = -lm
+CLIB = -lc
+UTILLIB = -lutil
+XINLIB = -lXinerama
+XINCPP = -DXINERAMA
+DOTINC = -I.
+SECINC = -Isec
+PATH9 = ../lib9
+INC9 = -I$PATH9
+LIB9 = -L$PATH9 -l9
+SECINC9 = -I$PATH9/sec
+CRYPTLIB = -lcrypt
+XRLIB = -lXrandr
+

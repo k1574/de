@@ -1,0 +1,13 @@
+xlck - X screen locker.
+Needs root rights to work by default is installed with SU-bit.
+Installation:
+	$ vi mkconfig # Edit installation configuration.
+	$ mk install
+In installation it will use "sudo" so don't be scared. It's needed rights to lock the screen.
+By default is installed into $HOME/local/bin.
+To run the program execute the binary. After entering the password it will unblock the screen.
+Configuration is made through "config.h" and editing source files.
+
+More information in "man".
+
+Program is based on "slock" by Suckless. Thank them please.

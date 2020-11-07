@@ -1,0 +1,2 @@
+#!/bin/env rc
+exec sam -S $* 

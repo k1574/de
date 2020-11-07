@@ -1,0 +1,11 @@
+<mkconfig
+<../mk/inc/cbuild
+clean :V:
+	rm -rf $TGT *.o
+install :V: $TGT strip
+	mkdir -p $EXE
+	cp -f $TGT $EXE/
+	chmod 0755 $EXE/$TGT
+uninstall :V:
+	rm -f $EXE/$TGT
+

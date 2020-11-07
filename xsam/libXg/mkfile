@@ -1,0 +1,20 @@
+<mkconfig
+
+HDR = `{ls *.h}
+SRC = `{ls *.c}
+OBJ = ${SRC:%.c=%.o}
+TGT=$NAME.a
+all install :VQ: $TGT
+	echo -n
+uninstall :VQ:
+	echo -n
+$TGT : $OBJ
+	$AR $ARFLAGS $TGT $OBJ
+%.o : %.c
+	$CC -c -o $target $CPPFLAGS $CFLAGS  $prereq
+%.c :Q: $HDR
+	touch $target
+%.h :Q:
+	touch $target
+clean:
+	rm -f $OBJ $TGT

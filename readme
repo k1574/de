@@ -1,0 +1,47 @@
+xde
+===
+
+xde - X desktop environment.
+
+Description
+-----------
+
+The package contains collection of programs that follow the DRY UNIX KISS principles
+to work in X11 based environments and more to work in the console.
+They are simple, compact and are enough for the most purposes. (my own experience)
+Some of programs are slightly rewritten to be easier built and used.
+There are Plan 9 OS programs ports since they are effective and easy to use,
+Suckless projects and a few more scripts from me.
+
+List
+----
+
+Everything on the list properly works when compiled with TCC unless otherwise specified.
+
+* Plan 9
+  * xsam - X sam implementation with a bit more features and rc instead of sh. (requires GCC)
+  * ed - the standand console editor.
+  * sed - stream ed version.
+  * awk
+  * yacc
+* Suckless
+  * xvvm - X window manager based on dwm with purpose to be more simplified.
+  * xtrm - X terminal emulator based on st.
+  * xmen - X menu based on dmenu.
+  * xsrf - X web browser using WebKit as engine based on surf. (requires GCC)
+  * xtab - X tabs holder based on tabbed.
+  * xprp - X prop util based on sprop.
+  * xsel - X print selection.
+  * xptr - X pointer control tool.
+  * xlsw - X list children windows.
+* Bitreich
+* k1574
+  * xgeo - X print screen geometry.
+  * xwup - X window under pointer.
+  * plumber - plumber script.
+
+Licensies
+---------
+
+Every project has it's own license with the "license" name.
+
