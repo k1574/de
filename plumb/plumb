@@ -10,8 +10,8 @@ fn open_in_video_browser {
 	exec mpv --really-quiet $url
 }
 
-if(test -z $download){
-	echo $0: '$download' is not set >[2=1]
+if(test -z $load){
+	echo $0: '$load' is not set >[2=1]
 	exit 1
 }
 
