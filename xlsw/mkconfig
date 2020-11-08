@@ -1,0 +1,13 @@
+<../mk/inc/util
+<../mk/inc/path
+<../mk/inc/inclib
+VERSION = 0.1
+NAME = xlsw
+INC = $USRINC $X11INC 
+LIB = $USRLIB $X11LIB $CLIB
+CPPFLAGS = $INC -DVERSION=\"$VERSION\"
+CFLAGS = $CPPFLAGS
+LDFLAGS  = $LIB \
+	$ADDLDFLAGS
+
+

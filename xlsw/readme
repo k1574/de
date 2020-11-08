@@ -1,0 +1,13 @@
+# xlsw
+X list window children windows.
+
+## Installation.
+``
+	$ vi mkconfig # Edit installation configuration file.
+	$ mk install
+``
+
+## Usage.
+``
+	$ xlsw [window_id]
+``

@@ -1,7 +1,7 @@
 <../mkconfig
+<../../mk/inc/path
 MKSHELL = rc
-all:VQ:
-	echo -n
+all:V:
 install:V:
 	mkdir -p $MAN/^(1 2 3 4 5 6 7 8)
 	for(d in man/*)
