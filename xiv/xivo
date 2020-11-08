@@ -1,0 +1,24 @@
+#!/bin/env rc
+
+opt = ()
+while(~ $1 -*)
+	switch($1){
+		# Options with argument.
+		case -h -w -t -x -y
+			opt = ($opt $1 $2)
+			shift ; shift
+		case *
+			opt = ($opt $1)
+			shift
+	}
+
+files = $*
+fds = ()
+for(i in $files){
+	if(test ! -f $i)
+		echo $0: $1: no such file >[2=1]
+	if not
+		fds = ($fds '<{2ff '$i'}')
+}
+
+eval exec xiv -t xiv $opt $fds

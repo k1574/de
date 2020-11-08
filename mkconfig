@@ -1,2 +1,4 @@
-DIRS = yacc rc xvvm xtrm xmen xlck xtab xlsw xgeo xprp goph ic xsam xsrf
+DIRS = yacc rc\
+	xvvm xtrm xmen xlck xtab xlsw xgeo xprp xiv\
+	goph ic xsam xsrf
 
