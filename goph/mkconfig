@@ -1,0 +1,10 @@
+<../mk/inc/path
+<../mk/inc/util
+<../mk/inc/inclib
+NAME = goph
+LIB = $CURLIB
+CPPFLAGS = -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700\
+	-DNEED_ASPRINTF -DNEED_STRCASESTR
+CFLAGS = $CPPFLAGS
+LDFLAGS = $LD_STATIC_FLAG $LIB
+
