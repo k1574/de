@@ -1,25 +1,10 @@
 <mkconfig
-
-SRC = `{ ls *.c }
-OBJ = ${SRC:%.c=%.o}
-#HDR = `{ ls *.h }
-TGT = $NAME
-
-all :VQ: $TGT
-	echo -n
-$TGT : $OBJ
-	$LD $LDFLAGS -o $target $prereq
-%.o : %.c
-	$CC $CFLAGS $CPPFLAGS -c -o $target $prereq
-%.c :Q: $HDR
-	touch $target
-%.h :Q:
-	touch $target
+<../mk/inc/cbuild
 install : $TGT
-	mkdir -p $BIN
-	cp -f $TGT $BIN
-	chmod 0755 $BIN/$TGT 
+	mkdir -p $EXE
+	cp -f $TGT $EXE
+	chmod 0755 $EXE/$TGT 
 uninstall: 
-	rm -f $BIN/$TGT
+	rm -f $EXE/$TGT
 clean :
 	rm -rf $TGT *.o 
