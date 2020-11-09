@@ -1,26 +1,23 @@
 <mkconfig
 #HDR = `{ls *.h}
 SRC = `{ls *.c}
-OBJ = ${SRC:%.c=%.o}
+OBJ = ${SRC:%.c=%.o} $PATH9/lib9.a
 TGT = $NAME
-all :Q: $TGT 
-	echo -n
+all :V: $TGT 
 strip :V: $TGT
 	$STRIP $TGT
 $TGT : $OBJ
-	$LD -o $target $LDFLAGS $OBJ $LIB
+	$LD -o $target $LDFLAGS $OBJ
 %.o :V: %.c
 	$CC -c -o $target $CPPFLAGS $CFLAGS $stem.c
-%.c :Q: $HDR
-	touch -c $target
-%.h :Q:
-	touch -c $target
+%.c :QN: $HDR
+%.h :QN:
 clean :V:
 	rm -rf $TGT *.o
 install :V: $TGT strip
-	mkdir -p $BIN $MAN/1
-	cp -f $TGT $BIN/$TGT
+	mkdir -p $EXE $MAN/1
+	cp -f $TGT $EXE/$TGT
 	cp -f man $MAN/1/$TGT
-	chmod 0755 $BIN/$TGT
+	chmod 0755 $EXE/$TGT
 uninstall :V:
-	rm -f $BIN/$TGT
+	rm -f $EXE/$TGT

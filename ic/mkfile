@@ -1,4 +1,6 @@
 <mkconfig
+SRC = `{ls *.c}
+HDR = `{ls *.h}
 <../mk/inc/cbuild
 clean :V:
 	rm -rf $TGT *.o

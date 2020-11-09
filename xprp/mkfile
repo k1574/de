@@ -1,4 +1,5 @@
 <mkconfig
+SRC = `{ls *.c}
 <../mk/inc/cbuild
 install : $TGT
 	mkdir -p $EXE

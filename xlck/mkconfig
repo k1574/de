@@ -2,9 +2,7 @@
 <../mk/inc/inclib
 <../mk/inc/util
 NAME = xlck
-# Version.
 VERSION = 1.4
-<../mk/inc/path
 # *BSD.
 #-DHAVE_SHADOW_H
 # NetBSD.

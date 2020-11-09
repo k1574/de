@@ -1,7 +1,9 @@
 <mkconfig
+SRC = `{ls *.c}
+HDR = `{ls *.h}
 <../mk/inc/cbuild
 clean :V:
-	rm $TGT $OBJ
+	rm -f $TGT $OBJ
 MKSHELL = rc
 install :V: $TGT strip
 	mkdir -p $EXE/ $MAN/1

@@ -3,7 +3,7 @@
 <../mk/inc/inclib
 NAME = yayacc
 INC = $INC9
-LIB = $LIB9
+LIB =
 CPPFLAGS = $INC -D_DEFAULT_SOURCE '-DNAME="'$NAME'"'
 CFLAGS = $CPPFLAGS
 LDFLAGS = $LD_STATIC_FLAG

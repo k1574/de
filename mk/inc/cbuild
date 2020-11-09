@@ -1,12 +1,10 @@
-HDR = `{ls *.h || echo}
-SRC = `{ls *.c}
-OBJ = ${SRC:%.c=%.o}
+OBJ = ${SRC:%.c=%.o} $OBJ
 TGT = $NAME
 all :V: $TGT
 strip :V: $TGT
 	$STRIP $TGT
 $TGT : $OBJ
-	$LD -o $target $LDFLAGS $OBJ $LIB
+	$LD -o $target $LDFLAGS $OBJ
 %.o :V: %.c
 	$CC -c -o $target $CFLAGS $stem.c
 %.c :N: $HDR

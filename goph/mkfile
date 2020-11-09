@@ -1,4 +1,6 @@
 <mkconfig
+SRC = `{ls *.c}
+HDR = `{ls *.h}
 <../mk/inc/cbuild
 install :V: $TGT
 	cp -f $TGT $EXE/

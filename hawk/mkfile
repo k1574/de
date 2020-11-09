@@ -1,21 +1,21 @@
 <mkconfig
 SYN = awkgram.y
-HDR = `{ls *.h}
-SRC =  `{ls *.c}
+HDR = awk.h proto.h
+SRC = lex.c lib.c main.c parse.c proctab.c re.c run.c tran.c y.tab.c $PATH9/lib9.a
 OBJ = ${SRC:%.c=%.o}
 TGT = $NAME
 all :V: $TGT
 strip :V: $TGT
 	$STRIP $TGT
-$TGT : $OBJ
-	$LD -o $target $LDFLAGS $OBJ $LIB
+$TGT : $OBJ y.tab.o
+	$LD -o $target $LDFLAGS $OBJ
 %.o :V: %.c
 	$CC -c -o $target $CFLAGS $stem.c
-%.c :N: $HDR x.tab.h
-%.h :N:
+$SRC :N: $HDR x.tab.h
+$HDR :N:
 x.tab.h : y.tab.h
 	cp y.tab.h x.tab.h
-y.tab.h : $SYN
+y.tab.h y.tab.c : $SYN
 	$YACC -d $SYN
 clean :V:
 	rm -rf $TGT *.o y.tab.c y.tab.h x.tab.h
