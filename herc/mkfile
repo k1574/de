@@ -1,32 +1,34 @@
 <mkconfig
 SYN = syn.y
-HDR = exec.h  fns.h  getflags.h  io.h  rc.h
+HDR = `{ls *.h}
 SRC = code.c exec.c getflags.c glob.c here.c io.c lex.c \
 	pcmd.c pfnc.c simple.c subr.c trap.c tree.c unixcrap.c \
 	var.c y.tab.c plan9ish.c havefork.c
 OBJ = ${SRC:%.c=%.o}
 TGT = $NAME
-all :V: $TGT 
+all :Q: $TGT 
+	echo -n
 strip :V: $TGT
 	$STRIP $TGT
-$TGT : $OBJ
+$TGT : x.tab.h $OBJ
 	$LD -o $target $LDFLAGS $OBJ $LIB
-%.o : x.tab.h %.c
-	$CC -c -o $target $CFLAGS $stem.c
-%.c :N: $HDR
-$HDR :N:
+%.o :V: %.c
+	$CC -c -o $target $CPPFLAGS $CFLAGS $stem.c
+%.c :Q: $HDR x.tab.h
+	touch $target
+%.h :Q:
+	touch $target
 x.tab.h: y.tab.h
 	cp y.tab.h x.tab.h
 y.tab.h: $SYN
-	$YACC9 -d $SYN
+	$YACC -d $SYN
 clean :V:
 	rm -rf $TGT *.o y.tab.c y.tab.h x.tab.h
 install :V: $TGT strip
-	mkdir -p $EXE $HOME/lib
+	mkdir -p $EXE $APP/$NAME
 	cp -f $TGT $EXE/
 	chmod 0755 $EXE/$TGT
 	cp man $MAN/1/$NAME
-	cp -f rcmain $HOME/lib
+	cp -f rcmain $APP/$NAME
 uninstall :V:
-	rm -f $EXE/$TGT $MAN/1/$NAME
-
+	rm -f $EXE/$TGT

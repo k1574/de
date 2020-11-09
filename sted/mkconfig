@@ -1,0 +1,9 @@
+<../mk/inc/path
+<../mk/inc/util
+<../mk/inc/inclib
+NAME = sted
+LIB = $LIB9
+INC = $INC9
+CPPFLAGS = $INC -D_DEFAULT_SOURCE
+CFLAGS = $CPPFLAGS
+LDFLAGS = $LD_STATIC_FLAG

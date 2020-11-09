@@ -13,8 +13,8 @@
 #define SETBIT(a,i)	((a)[(i)>>5] |= (1<<((i)&037)))
 #define NWORDS(n)	(((n)+32)/32)
 
-char *PARSER = "#9/yacc/yaccpar";
-char *PARSERS = "#9/yacc/yaccpars";
+char *PARSER = "#a/" NAME "/par";
+char *PARSERS = "#a/" NAME "/pars";
 
 #define TEMPNAME	"y.tmp.XXXXXX"
 #define ACTNAME		"y.acts.XXXXXX"
@@ -378,10 +378,9 @@ int	gtnm(void);
 void
 main(int argc, char *argv[])
 {
-	PARSER = unsharp(PARSER);
-	PARSERS = unsharp(PARSERS);
-	parser = PARSER;
-
+	PARSER = unsharp(PARSER) ;
+	PARSERS = unsharp(PARSERS) ;
+	parser = PARSER ;
 	setup(argc, argv);	/* initialize and read productions */
 	tbitset = NWORDS(ntokens);
 	cpres();		/* make table of which productions yield a given nonterminal */

@@ -1,4 +1,6 @@
-DIRS = yacc rc\
+DIRS = yayacc herc\
 	xvvm xtrm xmen xlck xtab xlsw xgeo xprp xiv\
-	goph ic xsam xsrf
+	goph ic\
+	ted sted hawk\
+	xsam xsrf # These require GCC so they get compiled last.
 

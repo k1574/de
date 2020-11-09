@@ -1,10 +1,10 @@
 <../mk/inc/path
 <../mk/inc/util
 <../mk/inc/inclib
-NAME = rc
-INC = $DOTINC $INC9 $SECINC9
-LIB = $LIB9 $MLIB
-CPPFLAGS = $INC -D_DEFAULT_SOURCE
+NAME = yayacc
+INC = $INC9
+LIB = $LIB9
+CPPFLAGS = $INC -D_DEFAULT_SOURCE '-DNAME="'$NAME'"'
 CFLAGS = $CPPFLAGS
 LDFLAGS = $LD_STATIC_FLAG
 

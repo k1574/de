@@ -20,9 +20,10 @@
 #define _key_searchnext	'n' /* search same string forward */
 #define _key_searchprev	'N' /* search same string backward */
 
-/* default plumber */
-static char *pager = "$gophpager" ;
+/* Default plumber. */
+static char *pager = "less" ;
 static char *plumber = "plumb" ;
 
-/* temporary directory template (must end with six 'X' characters) */
-static char tmpdir[] = "/tmp/sacc-XXXXXX";
+/* Temporary directory template (must end with six 'X' characters) */
+static char tmpdir[] = "/tmp/goph-XXXXXX";
+

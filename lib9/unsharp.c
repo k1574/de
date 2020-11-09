@@ -9,7 +9,7 @@ static struct {
 	char *old;
 	char *new;
 } replace[] = {
-	"#9", nil,	/* must be first */
+	"#a", 0, /* must be first */
 	"#d", "/dev/fd",
 };
 
@@ -19,8 +19,8 @@ unsharp(char *old)
 	char *new;
 	int i, olen, nlen, len;
 
-	if(replace[0].new == nil)
-		replace[0].new = get9root();
+	if(!replace[0].new)
+		replace[0].new = getapproot() ;
 
 	for(i=0; i<nelem(replace); i++){
 		if(!replace[i].new)

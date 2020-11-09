@@ -19,11 +19,12 @@ List
 Everything on the list properly works when compiled with TCC unless otherwise specified.
 
 * Plan 9
-  * xsam - X sam implementation with a bit more features and rc instead of sh. (requires GCC)
-  * ed - the standand console editor.
-  * sed - stream ed version.
-  * awk
-  * yacc
+  * xsam - X sam implementation with a bit more features and herc instead of sh. (requires GCC)
+  * ted - the standard silent console editor. (ed)
+  * sted - stream ted version. (sed)
+  * hawk - heraldic awk implementation (awk)
+  * yayacc - yet another yacc. (yacc)
+  * herc - stronger rc version. (rc)
 * Suckless
   * xvvm - X window manager based on dwm with purpose to be more simplified.
   * xtrm - X terminal emulator based on st.
@@ -39,6 +40,15 @@ Everything on the list properly works when compiled with TCC unless otherwise sp
   * xgeo - X print screen geometry.
   * xwup - X window under pointer.
   * plumb - plumber script.
+
+Install
+-------
+
+Every programs is installed in $HOME/exe directory because I think people
+must have the directory where they can put their own executables, since
+root permission is too much for installation scripts.
+Also I think people can want to change source much as I do
+so they will replace programs installed by default in the system.
 
 Licensies
 ---------

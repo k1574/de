@@ -3,7 +3,8 @@ CC = tcc
 LD = $CC
 STRIP = strip
 AR = ar
-YACC = yacc
-YACC9 = ../yacc/9yacc
+YACC = yayacc
 LEX = lex
+PKG_CONFIG_CFLAGS = pkg-config --cflags
+PkG_CONFIG_LIBS = pkg-config --libs
 

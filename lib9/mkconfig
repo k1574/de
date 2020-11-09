@@ -119,6 +119,7 @@ LIB9OBJ=\
 	exitcode.o\
 	fcallfmt.o\
 	get9root.o\
+	getapproot.o\
 	getcallerpc-$OBJTYPE.o\
 	getenv.o\
 	getfields.o\

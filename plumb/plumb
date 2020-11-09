@@ -1,4 +1,4 @@
-#!/bin/env rc
+#!/bin/env herc
 # k1574's plumber.
 
 fn usage {
@@ -48,6 +48,7 @@ case ('' 'www.')^jut.su
 case bitreich.org
 	switch($p){
 	case /live
+		echo suck
 		exec xmux -t'Bitreich radio:'$"url -e mpv $url
 	}
 }
@@ -79,7 +80,7 @@ fn open_in_web_browser {
 fn open_in_telnet_browser {
 	user_flag = `{~ $user _  || echo -l $user}
 	host_flag = `{~ $host _ || echo $host}
-	exec xmux -t $url -e rc -c $"comm';read' 
+	exec xmux -t $url -e herc -c $"comm';read' 
 }
 
 fn open_in_ftp_browser {
@@ -87,11 +88,11 @@ fn open_in_ftp_browser {
 	#host_flag = `{~ $host _ || echo $host}
 	#port_flag = `{~ $port _ || echo $port}
 	#comm  = `{echo ftp $user_flag $host_flag $port_flag}
-	exec xmux -t 'ftp:'$url -e rc -c 'mkdir -p $download && cd $download; ftp '$"url';read'
+	exec xmux -t 'ftp:'$url -e herc -c 'mkdir -p $download && cd $download; ftp '$"url';read'
 }
 
 fn open_in_ssh_browser {
-	exec xmux -t 'ssh:'url -e rc -c 'ssh '$url'; read'
+	exec xmux -t 'ssh:'url -e herc -c 'ssh '$url'; read'
 }
 
 fn handle_local_image {
@@ -107,9 +108,9 @@ fn handle_local_text {
 }
 
 fn handle_local_dir {
-	comm = 'rc -l'
+	comm = 'herc -l'
 	cd $p; t=`{pwd}
-	exec xmux -t$"t -e rc -c $"comm
+	exec xmux -t$"t -e herc -c $"comm
 }
 
 switch($scheme){

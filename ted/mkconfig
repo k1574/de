@@ -1,7 +1,7 @@
 CC = tcc
 LD = $CC
 STRIP = strip
-NAME = sed
+NAME = ted
 # Path to "lib9".
 PATH9 = ../lib9
 LOCAL = $HOME/local

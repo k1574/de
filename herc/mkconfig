@@ -1,10 +1,10 @@
 <../mk/inc/path
 <../mk/inc/util
 <../mk/inc/inclib
-YACC = $YACC9
-NAME = awk
-INC =  $DOTINC $INC9
+NAME = herc
+INC = $DOTINC $INC9 $SECINC9
 LIB = $LIB9 $MLIB
 CPPFLAGS = $INC -D_DEFAULT_SOURCE
 CFLAGS = $CPPFLAGS
-LDFLAGS = $LD_STATIC_FLAG $LIB
+LDFLAGS = $LD_STATIC_FLAG
+

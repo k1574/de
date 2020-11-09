@@ -65,7 +65,7 @@ static const Layout layouts[] = {
 
 static char menumon[] = "0" ;
 /* Easier CMD assigning. $1 in scripts is current monitor. */
-#define SHCMD(cmd) { "/bin/env", "rc", "-l", "-c", cmd, menumon, NULL }/*)*/
+#define SHCMD(cmd) { "/bin/env", "herc", "-l", "-c", cmd, menumon, NULL }/*)*/
 
 #define XRESOURCES "$home/lib/xresources"
 #define XRESOURCES_MERGE "test -r " XRESOURCES " && xrdb -merge " XRESOURCES
@@ -123,8 +123,8 @@ static char *rccmd[] = SHCMD( SETWMNAME("Hello, master `{whoami}") ";" \
 static char *runcmd[] = SHCMD(" eval `{echo -n | xmen -m $1 -p $prompt } ") ; /* Menu run. */
 static char *lockcmd[] = {"xlck", 0} ;
 static char *outruncmd[] = SHCMD(SETWMNAME("`{ eval `{echo -n | xmen -m $1 -p $prompt } }")) ; /* Set WM name to output of command. */
-static char *termcmd[] = {"xmux", "-txmux", "rc", "-l", 0} ; /* Terminal run. */
-static char *termtcmd[] = {"xtrm", "rc", "-l", 0} ; /* Text buffer terminal to run. */
+static char *termcmd[] = {"xmux", "-txmux", "herc", "-l", 0} ; /* Terminal run. */
+static char *termtcmd[] = {"xtrm", "herc", "-l", 0} ; /* Text buffer terminal to run. */
 static char *plumbcmd[] = SHCMD("url=`{eval echo `{xsel}} ; exec  plumb $\"url") ;
 /* Keyboard layouts. */
 static const char *dvorakkbdcmd[] = SHCMD(SETWMNAME("dvorak") ";"SET_DVORAK_KB_LT ";" );
