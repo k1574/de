@@ -1,3 +1,6 @@
 *.o
 *.a
+*/x.tab.h
+*/y.tab.c
+*/y.tab.h
 
