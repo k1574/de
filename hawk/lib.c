@@ -32,6 +32,8 @@ THIS SOFTWARE.
 #include "awk.h"
 #include "y.tab.h"
 
+extern char *cmdname, *curfname;
+
 FILE	*infile	= NULL;
 char	*file	= "";
 char	*record;
@@ -478,7 +480,6 @@ void yyerror(char *s)
 
 void SYNTAX(char *fmt, ...)
 {
-	extern char *cmdname, *curfname;
 	static int been_here = 0;
 	va_list varg;
 
@@ -534,7 +535,6 @@ void bcheck2(int n, int c1, int c2)
 
 void FATAL(char *fmt, ...)
 {
-	extern char *cmdname;
 	va_list varg;
 
 	fflush(stdout);
@@ -550,7 +550,6 @@ void FATAL(char *fmt, ...)
 
 void WARNING(char *fmt, ...)
 {
-	extern char *cmdname;
 	va_list varg;
 
 	fflush(stdout);
