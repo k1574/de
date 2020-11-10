@@ -2,5 +2,7 @@
 
 cd lib9 && make install && cd ..
 cd mk && make install && cd ..
+cd yayacc && mk install && cd ..
+cd herc && mk install && cd ..
 mk install
 

@@ -1,4 +1,4 @@
-DIRS = yayacc herc\
+DIRS =  yayacc herc\
 	xvvm xtrm xmen xlck xtab xlsw xgeo xprp xiv\
 	goph ic\
 	ted sted hawk\
