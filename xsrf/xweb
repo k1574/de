@@ -1,5 +1,5 @@
-#!/bin/env rc
-# The complete browser script by rc, xtab and xsrf.
+#!/bin/env herc
+# The complete browser script by herc, xtab and xsrf.
 
 if(test $#* -eq 0)
 	exec xemb -e xsrf

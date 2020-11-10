@@ -1,4 +1,5 @@
-#!/bin/env rc
+#!/bin/env herc
 # The script to bring xweb into the Tor network.
 cookie = `{mktemp}
 exec torify xweb -c $cookie $*
+
