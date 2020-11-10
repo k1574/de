@@ -32,18 +32,15 @@ Rcmain(void)
 {
 	char *s;
 	static char buf[BUFSIZ];
-	static int isset;
+	static int isset = 0 ;
 	if(isset)
 		return buf ;
 
-	if(s = getenv("HOME")){ 
-		strncpy(buf, s, sizeof(buf)-1);
-		strncat(buf, "/lib/rcmain", sizeof(buf)-1);
-		free(s);
-	} else {
-		strncpy(buf, get9root(), sizeof(buf)-1);
-	}
+	s = getapproot() ;
+	strncpy(buf, s, sizeof(buf)-1);
+	strncat(buf, "/" NAME "/rcmain", sizeof(buf)-1);
 
+	isset = 1 ;
 	return buf ; 
 }
 
