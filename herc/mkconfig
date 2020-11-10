@@ -2,6 +2,7 @@
 <../mk/inc/util
 <../mk/inc/inclib
 NAME = herc
+SCRIPT = rc
 INC = $DOTINC $INC9 $SECINC9
 LIB =
 CPPFLAGS = $INC -D_DEFAULT_SOURCE
