@@ -10,77 +10,12 @@ fn open_in_video_browser {
 	exec mpv --really-quiet $url
 }
 
-if(test -z $load){
-	echo $0: '$load' is not set >[2=1]
-	exit 1
-}
-
-if(test $#* -ne 1){
-	usage
-	exit 1
-}
-
-url = $1
-urlp = `{goblin urlprs $url} || {
-	echo $0: $url: incorrect URL >[1=2]
-	exit 1
-}
-
-scheme = $urlp(1)
-user = $urlp(2)
-pass = $urlp(3)
-host = $urlp(4)
-port = $urlp(5)
-p = $urlp(6)
-
-domains = (com ru org us online)
-switch($host){
-case *.youtube'.'^$domains youtube'.'^$domains
-	switch($p){
-	case /watch /watch/* /embed /embed/*
-		open_in_video_browser
-	}
-case ('' 'www.')^jut.su
-	switch($p){
-	case /*/*
-		open_in_video_browser	
-	}
-case bitreich.org
-	switch($p){
-	case /live
-		echo suck
-		exec xmux -t'Bitreich radio:'$"url -e mpv $url
-	}
-}
-
-imgfmt = `{2ff} || {echo $0: images are unsupported >[1=2]}
-
-fn plumb_local_file {
-	switch($p){
-		case *.d
-			handle_local_dir
-		case *.^$imgfmt
-			handle_local_image
-		case *.mp4 *.mkv
-			handle_local_video
-		case *.c *.rc *.md *.txt *.cc *.cpp *.C *.cs *.txt *.py *.hs *.rs *
-			handle_local_text
-	}
-
-}
-
-fn open_in_gopher_browser {
-	exec xmux -t 'goph:'$url -e goph $url
-}
-
-fn open_in_web_browser {
-	exec xsrf $url
-}
-
 fn open_in_telnet_browser {
 	user_flag = `{~ $user _  || echo -l $user}
 	host_flag = `{~ $host _ || echo $host}
-	exec xmux -t $url -e herc -c $"comm';read' 
+	port_flag = `{~ $port _ || echo $port}
+	comm = (telnet $user_flag $host_flag $port_flag)
+	exec xmux -t $url herc -c $"comm';read' 
 }
 
 fn open_in_ftp_browser {
@@ -88,11 +23,15 @@ fn open_in_ftp_browser {
 	#host_flag = `{~ $host _ || echo $host}
 	#port_flag = `{~ $port _ || echo $port}
 	#comm  = `{echo ftp $user_flag $host_flag $port_flag}
-	exec xmux -t 'ftp:'$url -e herc -c 'mkdir -p $download && cd $download; ftp '$"url';read'
+	exec xmux -t 'ftp:'$url herc -c 'mkdir -p $download && cd $download; ftp '$"url';read'
+}
+
+fn open_in_http_music_player {
+	exec xmux -t 'Music Player:'$url herc -c 'mpv --really-quiet '$url'; read'
 }
 
 fn open_in_ssh_browser {
-	exec xmux -t 'ssh:'url -e herc -c 'ssh '$url'; read'
+	exec xmux -t 'ssh:'$url herc -c 'ssh '$url'; read'
 }
 
 fn handle_local_image {
@@ -110,7 +49,73 @@ fn handle_local_text {
 fn handle_local_dir {
 	comm = 'herc -l'
 	cd $p; t=`{pwd}
-	exec xmux -t$"t -e herc -c $"comm
+	exec xmux -t$"t herc -c $"comm
+}
+
+fn plumb_local_file {
+	switch($p){
+		case *.d
+			handle_local_dir
+		case *.^$imgfmt
+			handle_local_image
+		case *.mp4 *.mkv
+			handle_local_video
+		case *.c *.rc *.md *.txt *.cc *.cpp *.C *.cs *.txt *.py *.hs *.rs *
+			handle_local_text
+	}
+
+}
+
+fn open_in_gopher_browser {
+	exec xmux -t 'goph:'$url goph $url
+}
+
+fn open_in_web_browser {
+	exec xsrf $url
+}
+
+if(test -z $load){
+	echo $0: '$load' is not set >[2=1]
+	exit 1
+}
+if(test $#* -ne 1){
+	usage
+	exit 1
+}
+
+
+url = $1
+urlp = `{goblin urlprs $url} || {
+	echo $0: $url: incorrect URL >[1=2]
+	exit 1
+}
+
+scheme = $urlp(1)
+user = $urlp(2)
+pass = $urlp(3)
+host = $urlp(4)
+port = $urlp(5)
+p = $urlp(6)
+
+imgfmt = `{2ff || {echo $0: images are unsupported >[1=2]} }
+
+domains = (com ru org us online)
+switch($host){
+case *.youtube'.'^$domains youtube'.'^$domains
+	switch($p){
+	case /watch /watch/* /embed /embed/*
+		open_in_video_browser
+	}
+case ('' 'www.')^jut.su
+	switch($p){
+	case /*/*
+		open_in_video_browser	
+	}
+case bitreich.org
+	switch($p){
+	case /live
+		open_in_http_music_player
+	}
 }
 
 switch($scheme){

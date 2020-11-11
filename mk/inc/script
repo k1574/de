@@ -1,5 +1,7 @@
 # Standard installation for scripts.
 MKSHELL=rc
+all:VQ:
+	echo -n
 install:V:
 	for(i in $NAME){
 		cp $i $EXE/$i
