@@ -1,5 +1,10 @@
 <mkconfig
 MKSHELL = rc
+DIRS = yayacc herc\
+        xvvm xtrm xmen xlck xtab xlsw xgeo xsel xprp xiv\
+        goph ic plumb\
+        ted sted hawk\
+        xsam xsrf # These require GCC so they get compiled last.
 
 all :Q:
 
