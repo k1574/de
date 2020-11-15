@@ -145,7 +145,7 @@ static Key keys[] = {
 	{ MODKEY, XK_Tab, spawn, {.v = dvorakkbdcmd} }, /* Dvorak. */
 	{ MODKEY, XK_BackSpace, spawn, {.v = natkbdcmd} }, /* Alternative. */
 	{ MODKEY, XK_Return, spawn, {.v = dvpkbdcmd} }, /* Dvorak programmer. */
-	{ MODKEY, XK_x, killFocusedClient, {0} }, /* Close current window. */
+	{ MODKEY, XK_x, killcurclient, {0} }, /* Close current window. */
 	{ MODKEY,  XK_b, togglebar, {0} }, /* Toggle bar with tags and other. */
 	{ MODKEY, XK_j, focusstack, {.i = +1 } }, /* Change focus via keyboard(Next). */
 	{ MODKEY, XK_k, focusstack, {.i = -1 } }, /* Change focus via keyboard(Previous). */
@@ -235,8 +235,8 @@ static Button buttons[] = {
 	{ ClkClientWin, MODKEY, Button1, movemouse, {0} },
 	{ ClkWinTitle, 0, Button1, moveclick, {0} },
 	/* Close current window. */
-	{ ClkClientWin, MODKEY|ShiftMask, Button2, killFocusedClient, {0}  },
-	{ ClkWinTitle, 0, Button2, killClientByClick, {0}  },
+	{ ClkClientWin, MODKEY|ShiftMask, Button2, killcurclient, {0}  },
+	{ ClkWinTitle, 0, Button2, killclick, {0}  },
 	/* Focus on window under cursor. */
 	{ ClkClientWin, MODKEY, Button2, focuscurwin, {0} },
 	/* Up window on the stack of view. */

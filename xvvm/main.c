@@ -188,7 +188,7 @@ static void arrangemon(Monitor *m);
 static void attach(Client *c);
 static void attachstack(Client *c);
 static void buttonpress(XEvent *e);
-static Client* getClientByClick(uint waitRelease, uint returnCurrentIfNoChoosen);
+static Client* clientclick(uint waitRelease, uint returnCurrentIfNoChoosen);
 static void checkotherwm(void);
 static void cleanup(void);
 static void cleanupmon(Monitor *mon);
@@ -222,8 +222,8 @@ static void grabbuttons(Client *c, int focused);
 static void grabkeys(void);
 static void incnmaster(const Arg *arg);
 static void keypress(XEvent *e);
-static void killFocusedClient(const Arg *arg);
-static void killClientByClick(const Arg *arg);
+static void killcurclient(const Arg *arg);
+static void killclick(const Arg *arg);
 static void manage(Window w, XWindowAttributes *wa);
 static void mappingnotify(XEvent *e);
 static void maprequest(XEvent *e);
@@ -233,8 +233,8 @@ static void movemouse(const Arg *arg);
 static void moveclick(const Arg *arg);
 static void moveWins(Monitor *m, int dx, int dy);
 static uint nClients(Monitor *m, uint m);
-static Client *nextClient(Client *c, uint m);
-static uint ckClient(Client *c, uint m);
+static Client *nextclient(Client *c, uint m);
+static uint ckclient(Client *c, uint m);
 static void nextlayout(const Arg *arg);
 static void pop(Client *);
 static void propertynotify(XEvent *e);
@@ -293,7 +293,7 @@ static void view(const Arg *arg);
 static void viewnext(const Arg *arg);
 static Client *wintoclient(Window w);
 static Monitor *wintomon(Window w);
-static XEvent *waitMouseEvent(int type);
+static int waitmouse(XEvent *ev, int type);
 static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
@@ -541,7 +541,7 @@ buttonpress(XEvent *e)
 }
 
 Client *
-getClientByClick(uint waitButtonRelease, uint returnCurrentIfNoChoosen)
+clientclick(uint waitButtonRelease, uint returnCurrentIfNoChoosen)
 {
 	Client *c;
 	int x, y;
@@ -566,7 +566,7 @@ getClientByClick(uint waitButtonRelease, uint returnCurrentIfNoChoosen)
 		}
 	}while( ev.type != ButtonPress );
 	if(waitButtonRelease)
-		free(waitMouseEvent(ButtonRelease));
+		waitmouse(&ev, ButtonRelease);
 	
 	XUngrabPointer(dpy, CurrentTime) ;
 
@@ -926,7 +926,7 @@ floating(Monitor *m)
 {
 	Client *c;
 	/* if( !nClients(m, IsVisible|IsTile) ) return ; */
-	for( c=nextClient(m->clients, IsTile|IsVisible) ; c ; c=nextClient(c->next, IsTile|IsVisible) )
+	for( c=nextclient(m->clients, IsTile|IsVisible) ; c ; c=nextclient(c->next, IsTile|IsVisible) )
 		resize(c, c->fx, c->fy, c->fw, c->fh, 0);
 }
 
@@ -1176,7 +1176,7 @@ keypress(XEvent *e)
 }
 
 void
-killFocusedClient(const Arg *arg)
+killcurclient(const Arg *arg)
 {
 	if (!selmon->sel)
 		return;
@@ -1290,8 +1290,8 @@ monocle(Monitor *m)
 	if (n > 0){ /* Override layout symbol. */
 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
 	}
-	for (c = nextClient(m->clients, IsTile|IsVisible); c;
-			 c = nextClient(c->next, IsTile|IsVisible) ){
+	for (c = nextclient(m->clients, IsTile|IsVisible); c;
+			 c = nextclient(c->next, IsTile|IsVisible) ){
 		resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, 0);
 	}
 }
@@ -1318,7 +1318,7 @@ movemouse(const Arg *arg)
 	int x, y, nx, ny;
 	Client *c;
 	Monitor *m = selmon ;
-	XEvent *ev;
+	XEvent ev;
 
 	if ( !(c = m->sel) || c->isfullscreen) return; 
 
@@ -1331,9 +1331,8 @@ movemouse(const Arg *arg)
 
 	if (!getrootptr(&x, &y)) return;
 
-	ev = waitMouseEvent(ButtonRelease) ;
-	nx = ev->xbutton.x ; ny = ev->xbutton.y ;
-	free(ev);
+	waitmouse(&ev, ButtonRelease);
+	nx = ev.xbutton.x ; ny = ev.xbutton.y ;
 
 	if ( !c->isfree && m->lt != &layouts[LayoutFloating] )
 		c->isfree = 1 ;
@@ -1351,37 +1350,39 @@ moveclick(const Arg *arg)
 {
 	int x, y;
 	Client *c;
+	XEvent ev;
 	getrootptr(&x, &y);
-	free(waitMouseEvent(ButtonRelease));
-	if(! (c = getClientByClick(0, 1)) ) return ;
+	//waitmouse(&ev, ButtonRelease);
+	if(! (c = clientclick(0, 1)) ) return ;
 	focus(c);
 	movemouse(0);
 	XWarpPointer(dpy, None, root, 0, 0, 0, 0, x, y);
 }
 
 void
-killClientByClick(const Arg *arg)
+killclick(const Arg *arg)
 {
 	int x, y;
 	Client *c;
+	XEvent ev;
 	getrootptr(&x, &y);
-	free(waitMouseEvent(ButtonRelease));
-	if(! (c = getClientByClick(0, 1)) ) return ;
+	//waitmouse(&ev, ButtonRelease);
+	if(! (c = clientclick(0, 1)) ) return ;
 	focus(c);
-	killFocusedClient(0);
+	killcurclient(0);
 	XWarpPointer(dpy, None, root, 0, 0, 0, 0, x, y);
 }
 
 Client *
-nextClient(Client *c, uint m)
+nextclient(Client *c, uint m)
 {
-	for (; c && !ckClient(c, m) ; c = c->next)
+	for (; c && !ckclient(c, m) ; c = c->next)
 		;
 	return c;
 }
 
 uint
-ckClient(Client *c, uint m)
+ckclient(Client *c, uint m)
 {
 	if(m&IsTile && c->isfree
 		|| m&IsFree && !c->isfree
@@ -1508,7 +1509,7 @@ resizemouse(const Arg *arg)
 	int nw, nh;
 	Client *c;
 	Monitor *m;
-	XEvent *ev;
+	XEvent ev;
 
 	if (!(c = selmon->sel) || c->isfullscreen) return ;
 
@@ -1523,8 +1524,8 @@ resizemouse(const Arg *arg)
 			0, 0, 0, 0,
 			c->w - c->bw, c->h - c->bw);
 
-	ev = waitMouseEvent(ButtonRelease) ;
-	nw = MAX(1, ev->xbutton.x - c->x ) ; nh = MAX(1, ev->xbutton.y - c->y ) ;
+	waitmouse(&ev, ButtonRelease) ;
+	nw = MAX(1, ev.xbutton.x - c->x ) ; nh = MAX(1, ev.xbutton.y - c->y ) ;
 
 	if( c->mon->wx + nw >= selmon->wx && c->mon->wx + nw <= selmon->wx + selmon->ww
 			&& c->mon->wy + nh >= selmon->wy
@@ -1539,23 +1540,23 @@ resizemouse(const Arg *arg)
 	/* To prevent increasing window width and height when just clicking. */
 	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w + c->bw - 1, c->h + c->bw - 1);
 	XUngrabPointer(dpy, CurrentTime);
-	while (XCheckMaskEvent(dpy, EnterWindowMask, ev));
+	while (XCheckMaskEvent(dpy, EnterWindowMask, &ev));
 	if ((m = recttomon(c->x, c->y, c->w, c->h)) != selmon) {
 		sendmon(c, m);
 		selmon = m;
 		focus(NULL);
 	}
-	free(ev);
 }
 
 void
 resizeclick(const Arg *arg)
 {
 	int x, y;
+	XEvent ev;
 	Client *c;
 	getrootptr(&x, &y);
-	free(waitMouseEvent(ButtonRelease));
-	if(! (c = getClientByClick(0, 1)) ) return ;
+	//waitmouse(&ev, ButtonRelease);
+	if(! (c = clientclick(0, 1)) ) return ;
 	focus(c);
 	resizemouse(NULL);
 	XWarpPointer(dpy, None, root, 0, 0, 0, 0, x, y);
@@ -1791,8 +1792,8 @@ unsigned int
 nClients(Monitor *mon, uint m)
 {
 	uint n; Client *c;
-	for( n = 0, c = nextClient(mon->clients, m) ; c ;
-			c = nextClient(c->next, m), ++n)
+	for( n = 0, c = nextclient(mon->clients, m) ; c ;
+			c = nextclient(c->next, m), ++n)
 		;
 	return n ;
 }
@@ -2022,7 +2023,7 @@ void
 moveWins(Monitor *m, int dx, int dy)
 {
 	Client *c;
-	for ( c=nextClient(m->clients, IsTile) ; c ; c=nextClient(c->next, IsTile) )
+	for ( c=nextclient(m->clients, IsTile) ; c ; c=nextclient(c->next, IsTile) )
 		setFloatingGeometry(c, c->fx + dx, c->fy + dy, c->fw, c->fh);
 	arrange(m);
 }
@@ -2040,7 +2041,7 @@ tile(Monitor *m)
 	}else{
 		mw = m->ww ;
 	}
-	for (i = my = ty = 0, c = nextClient(m->clients, IsTile|IsVisible); c; c = nextClient(c->next, IsTile|IsVisible), i++){
+	for (i = my = ty = 0, c = nextclient(m->clients, IsTile|IsVisible); c; c = nextclient(c->next, IsTile|IsVisible), i++){
 		if( i < m->nmaster ){
 			h = (m->wh - my) / (MIN(n, m->nmaster) - i) ;
 			resize(c,
@@ -2074,7 +2075,7 @@ split(Monitor* m)
 	}else{
 		mh = m->wh ;
 	}
-	for( i=mx=tx=0, c=nextClient(m->clients, IsTile|IsVisible) ; c ; c=nextClient(c->next, IsTile|IsVisible), i++){
+	for( i=mx=tx=0, c=nextclient(m->clients, IsTile|IsVisible) ; c ; c=nextclient(c->next, IsTile|IsVisible), i++){
 		if( i < m->nmaster ){
 			w = (m->ww - mx) / (MIN(n, m->nmaster) - i) ;
 			resize(c,
@@ -2535,17 +2536,14 @@ wintomon(Window w)
 	return selmon ;
 }
 
-XEvent *
-waitMouseEvent(int type)
+int
+waitmouse(XEvent *ev, int type)
 {
 
-
-	XEvent *ev = malloc(SIZEL(ev)) ;
-	
 	if( XGrabPointer(dpy, root, False, MOUSEMASK, GrabModeAsync, GrabModeAsync,
 			None, cursor[CurMove]->cursor, CurrentTime)
 			!= GrabSuccess)
-		return 0 ;
+		return 1 ;
 		
 	do{
 		XMaskEvent(dpy, MOUSEMASK|ExposureMask|SubstructureRedirectMask, ev);
@@ -2562,7 +2560,7 @@ waitMouseEvent(int type)
 
 	XUngrabPointer(dpy, CurrentTime) ;
 
-	return ev ;
+	return 0 ;
 }
 
 /* There's no way to check accesses to destroyed windows, thus those cases are
@@ -2610,8 +2608,8 @@ zoom(const Arg *arg)
 	if (!selmon->lt->arrange
 			|| (selmon->sel && selmon->sel->isfree))
 		return;
-	if (c == nextClient(selmon->clients, IsTile|IsVisible))
-		if (!c || !(c = nextClient(c->next, IsTile|IsVisible)))
+	if (c == nextclient(selmon->clients, IsTile|IsVisible))
+		if (!c || !(c = nextclient(c->next, IsTile|IsVisible)))
 			return;
 	pop(c);
 }
