@@ -4,13 +4,14 @@ MKSHELL = rc
 SRC = `{ls *.c}
 OBJ = ${SRC:%.c=%.o} $PATH9/lib9.a
 TGT = $NAME
+CFLAGS = $CPPFLAGS
 all :V: $TGT 
 strip :V: $TGT
 	$STRIP $TGT
 $TGT : $OBJ
 	$LD -o $target $LDFLAGS $OBJ
 %.o :V: %.c
-	$CC -c -o $target $CPPFLAGS $CFLAGS $stem.c
+	$CC -c -o $target $CFLAGS $stem.c
 %.c :QN: $HDR
 %.h :QN:
 clean :V:
