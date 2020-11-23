@@ -421,6 +421,7 @@ printcom(void)
 			count = a1-zero;
 			putd();
 			putchr('\t');
+			putchr('|');
 		}
 		putshst(getline(*a1++));
 	} while(a1 <= addr2);
