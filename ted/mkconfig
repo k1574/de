@@ -2,6 +2,7 @@
 <../mk/inc/util
 <../mk/inc/inclib
 NAME = ted
+SCRIPT = ed
 INC = $INC9
 LIB9 = -L$PATH9 -l9
 LIB =

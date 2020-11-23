@@ -1,4 +1,5 @@
 <mkconfig
+MKSHELL = rc
 #HDR = `{ls *.h}
 SRC = `{ls *.c}
 OBJ = ${SRC:%.c=%.o} $PATH9/lib9.a
@@ -16,8 +17,8 @@ clean :V:
 	rm -rf $TGT *.o
 install :V: $TGT strip
 	mkdir -p $EXE $MAN/1
-	cp -f $TGT $EXE/$TGT
+	cp -f $TGT $SCRIPT $EXE/
 	cp -f man $MAN/1/$TGT
-	chmod 0755 $EXE/$TGT
+	chmod 0755 $EXE/^($TGT $SCRIPT)
 uninstall :V:
 	rm -f $EXE/$TGT
