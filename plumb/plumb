@@ -27,7 +27,7 @@ fn open_in_ftp_browser {
 }
 
 fn open_in_http_music_player {
-	exec xmux -t 'Music Player:'$url herc -c 'mpv --really-quiet '$url'; read'
+	exec xmux -t 'Music Player:'$url herc -c 'mpv '$url'; read'
 }
 
 fn open_in_ssh_browser {
