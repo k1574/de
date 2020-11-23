@@ -54,6 +54,7 @@ int	oflag;
 Reprog	*pattern;
 int	peekc;
 int	pflag;
+int bformat, bnum;
 int	rescuing;
 Rune	rhsbuf[LBSIZE/sizeof(Rune)];
 char	savedfile[FNSIZE];
@@ -215,7 +216,8 @@ commands(void)
 		case 'a':
 			add(0);
 			continue;
-
+		case 'B':
+			++bnum;	
 		case 'b':
 			nonzero();
 			browse();
@@ -882,7 +884,6 @@ void
 browse(void)
 {
 	int forward, n;
-	static int bformat, bnum; /* 0 */
 
 	forward = 1;
 	peekc = getchr();
@@ -915,6 +916,8 @@ browse(void)
 			addr1 = zero+1;
 	}
 	printcom();
+	bnum = 0;
+	bformat = 0;
 }
 
 void
