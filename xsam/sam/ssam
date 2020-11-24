@@ -39,3 +39,4 @@ cat $* >$tmp
 } | sam -d $tmp >[2]/dev/null
 
 rm -f $tmp
+

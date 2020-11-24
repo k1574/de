@@ -1,7 +1,7 @@
-<../../mk/inc/path
-<../../mk/inc/util
+<../../mkconfig
 <../mkconfig
 NAME = sam
+SCRIPT = x$NAME s$NAME
 DDINC = -I../inc
 INC = $INC $DDINC
 XTLIB = -lXt
@@ -11,7 +11,7 @@ LIB = $XLIB
 # Static libraries.
 SLIB = ../libframe/libframe.a ../libXg/libXg.a
 CPPFLAGS = $INC $STD \
-	-DRXPATH=\"$RXPATH\"
-CFLAGS = $CFLAGS
+	'-DRXPATH="'$RXPATH'"'
+CFLAGS = $CPPFLAGS
 LDFLAGS = $LD_STATIC_FLAG
 

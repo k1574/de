@@ -1,0 +1,5 @@
+#!/bin/env rc
+
+files = `{goblin ls -r 100 $* | ftest -f }
+sam -S $files
+

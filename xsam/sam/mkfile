@@ -1,24 +1,23 @@
 <mkconfig
 HDR = `{ls *.h}
 SRC = `{ls *.c}
-OBJ = ${SRC:%.c=%.o}
+OBJ = ${SRC:%.c=%.o} $SLIB
 TGT = $NAME
 all :Q: $TGT 
 	echo -n
 strip :V: $TGT
 	$STRIP $TGT
 $TGT : $OBJ
-	$LD -o $TGT $LDFLAGS $OBJ $SLIB $LIB
+	$LD -o $TGT $LDFLAGS $OBJ
 %.o :V: %.c
-	$CC -c -o $target $CPPFLAGS $CFLAGS $prereq
+	$CC -c -o $target $CFLAGS $prereq
 %.c :N: $HDR
 %.h :N:
+MKSHELL = rc
 clean :V:
 	rm -rf $TGT *.o
 install :V: $TGT
-	cp -f $TGT $EXE/
-	cp -f x$TGT.rc $EXE/x$TGT
-	cp -f s$TGT.rc $EXE/s$TGT
-	chmod 0755 $EXE/$TGT $EXE/x$TGT $EXE/s$TGT
+	cp -f $TGT $SCRIPT $EXE/
+	chmod 0755 $EXE/^($TGT $SCRIPT)
 uninstall :V:
 	rm -f $EXE/$TGT
