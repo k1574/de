@@ -158,6 +158,15 @@ ff_close(struct img *img)
 	free(img->buf);
 }
 
+static void
+getdrawoffset(int *xoffset, int *yoffset)
+{
+	*xoffset = (winwidth - ximg->width) / 2;
+	*yoffset = (winheight - ximg->height) / 2;
+	*xoffset -= cimg->view.panxoffset;
+	*yoffset -= cimg->view.panyoffset;
+}
+
 /* NOTE: will be removed later, for debugging alpha mask */
 #if 0
 static void
@@ -303,18 +312,13 @@ draw(void)
 {
 	int xoffset = 0, yoffset = 0;
 
-	if (viewmode != FULL_STRETCH) {
-		/* center vertical, horizontal */
-		xoffset = (winwidth - ximg->width) / 2;
-		yoffset = (winheight - ximg->height) / 2;
-		/* pan offset */
-		xoffset -= cimg->view.panxoffset;
-		yoffset -= cimg->view.panyoffset;
-	}
+	if (viewmode != FULL_STRETCH)
+		getdrawoffset(&xoffset, &yoffset);
 	XSetForeground(dpy, gc, bg.pixel);
 	XFillRectangle(dpy, xpix, gc, 0, 0, winwidth, winheight);
 	XPutImage(dpy, xpix, gc, ximg, 0, 0, xoffset, yoffset, ximg->width, ximg->height);
 	XCopyArea(dpy, xpix, win, gc, 0, 0, winwidth, winheight, 0, 0);
+	
 
 	XFlush(dpy);
 	cimg->state |= DRAWN;
