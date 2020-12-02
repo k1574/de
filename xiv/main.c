@@ -350,7 +350,7 @@ pan(int x, int y)
 {
 	cimg->view.panxoffset -= x;
 	cimg->view.panyoffset -= y;
-	cimg->state &= ~(DRAWN | SCALED);
+	cimg->state &= ~(DRAWN);
 	update();
 }
 
