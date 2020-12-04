@@ -76,7 +76,7 @@ static char menumon[] = "0" ;
 #define SETWMNAME(str) "out = `{echo -n "str"} ; xsetroot -name $\"out"
 
 /* Keyboard. */
-#define SET_KB_LT "setxkbmap"
+#define SET_KB_LT "setxkbmap -model pc105 -keycodes evdev"
 /* It's made to escape using Compose key in games and stuff. */
 #define CLEAR_KB_LT SET_KB_LT " -option"
 
