@@ -80,9 +80,9 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
 #define DOWNLOAD(u, r) { \
 	.v = (const char *[]){ "/bin/env", "herc", "-c",\
 		"exec xtrm `{test -z $XEMBED || echo -w $XEMBED}-t $1':'$5 -e herc -c '"\
-			"mkdir -p $download && cd $download "\
-			"&& curl -g -L -J -O -A $2 -b $3 -c $3 -e $4 $5 "\
-			"&& read' $*", \
+			"test -z $load || {mkdir -p $load && cd $load }"\
+			"; curl -g -L -J -O -A $2 -b $3 -c $3 -e $4 $5"\
+			"; read' $*", \
 			"'"\
              "xsrf-download", useragent, cookiefile, r, u, NULL \
         } \
