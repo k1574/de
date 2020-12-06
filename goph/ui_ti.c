@@ -491,6 +491,7 @@ uiselectitem(Item *entry)
 			if (dir)
 				return &dir->items[dir->curline];
 			continue;
+		case _key_scrolldown:
 		case _key_lndown:
 		lndown:
 			movecurline(entry, 1);
@@ -506,6 +507,7 @@ uiselectitem(Item *entry)
 		end:
 			jumptoline(entry, dir->nitems, 0);
 			continue;
+		case _key_scrollup:
 		case _key_lnup:
 		lnup:
 			movecurline(entry, -1);

@@ -2,6 +2,8 @@
 
 /* Screen UI navigation keys */
 #define _key_lndown	'j' /* move one line down */
+#define _key_scrolldown (char)5
+#define _key_scrollup (char)25
 #define _key_entrydown	'J' /* move to next link */
 #define _key_lnup	'k' /* move one line up */
 #define _key_entryup	'K' /* move to previous link */
