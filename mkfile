@@ -1,7 +1,7 @@
 <mkconfig
 MKSHELL = rc
 DIRS = yayacc herc\
-        xvvm xtrm xmen xlck xtab xlsw xgeo xsel xprp xiv\
+        xvvm xtrm xmen xlck xtab xlsw xgeo xsel xprp xiv xzoom\
         goph ic plumb\
         ted sted hawk\
         xsam xsrf # These require GCC so they get compiled last.
