@@ -1,9 +1,5 @@
-MKPATH = ../mk
-<$MKPATH/inc/path
-<$MKPATH/inc/inclib
-<$MKPATH/inc/util
-
-NAME = lib9
+<../../mkconfig
+NAME = 9
 VERSION = 7
 
 # Plan9 root directory. Depends on your installation.

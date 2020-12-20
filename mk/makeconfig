@@ -12,7 +12,7 @@ OBJTYPE     = 386
 
 # It's required to compile. Mostly you can just clone both repos in one directory and compile "mk"
 # without changing anything here.
-PATH9 = ../lib9
+PATH9 = ../lib/9
 
 CC = tcc
 LD = ${CC}
@@ -23,7 +23,7 @@ DOTINC = -I.
 INC9 = -I${PATH9}/ -I${PATH9}/sec
 
 MLIB = -lm
-LIB9 = -L${PATH9} -l9
+OBJ9 = ${PATH9}/9.a
 
 INC = ${DOTINC} ${INC9}
 LIB = ${LIB9} ${MLIB}

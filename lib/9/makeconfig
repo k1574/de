@@ -1,4 +1,4 @@
-NAME = lib9
+NAME = 9
 VERSION = 7
 
 # Plan9 root directory. Depends on your installation.

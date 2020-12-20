@@ -1,6 +1,6 @@
 <mkconfig
 SRC = `{ls *.c}
-OBJ = $PATH9/lib9.a
+OBJ = $OBJ $OBJ9
 <../mk/inc/cbuild
 clean :V:
 	rm -rf $TGT *.o

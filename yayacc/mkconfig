@@ -1,7 +1,7 @@
-<../mk/inc/path
-<../mk/inc/util
-<../mk/inc/inclib
+<../mkconfig
 NAME = yayacc
+INC9 = -I../$PATH9
+OBJ9 = ../$PATH9/9.a
 INC = $INC9
 LIB =
 CPPFLAGS = $INC -D_DEFAULT_SOURCE '-DNAME="'$NAME'"'

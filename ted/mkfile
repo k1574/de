@@ -2,7 +2,7 @@
 MKSHELL = rc
 #HDR = `{ls *.h}
 SRC = `{ls *.c}
-OBJ = ${SRC:%.c=%.o} $PATH9/lib9.a
+OBJ = ${SRC:%.c=%.o} $OBJ9
 TGT = $NAME
 CFLAGS = $CPPFLAGS
 all :V: $TGT 
