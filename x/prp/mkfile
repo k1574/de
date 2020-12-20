@@ -1,0 +1,11 @@
+<mkconfig
+SRC = `{ls *.c}
+<../../mk/inc/cbuild
+install : $TGT
+	mkdir -p $EXE
+	cp -f $TGT $EXE
+	chmod 0755 $EXE/$TGT 
+uninstall: 
+	rm -f $BIN/$TGT
+clean :
+	rm -rf $TGT *.o 

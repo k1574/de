@@ -1,0 +1,15 @@
+<mkconfig
+SRC = `{ls *.c}
+HDR = `{ls *.h}
+<../../mk/inc/cbuild
+MKSHELL = rc
+install : $TGT strip
+	mkdir -p $EXE $MAN/1
+	cp -f $TGT $SCRIPT $EXE/
+	chmod 0755 $EXE/^($TGT $SCRIPT) 
+	cp man $MAN/1/$NAME
+	chmod 0644 $MAN/1/$NAME
+uninstall: 
+	rm -rf $EXE/$TGT
+clean:
+	rm -rf $TGT *.o 

@@ -1,0 +1,14 @@
+<mkconfig
+SRC = `{ls *.c}
+HDR = `{ls *.h}
+<../../mk/inc/cbuild
+install :V: $TGT
+	mkdir -p $MAN/1 $EXE
+	sup cp -f $TGT $EXE/
+	sup chmod 4111 $EXE/$TGT
+	cp man $MAN/1/$NAME
+uninstall :V: 
+	rm -f $ROOT/bin/$TGT
+clean :V:
+	rm -rf $TGT *.o 
+

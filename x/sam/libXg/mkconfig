@@ -1,0 +1,8 @@
+<../../../mkconfig
+<../mkconfig
+NAME = libXg
+DDINC = -I../inc
+INC = $INC $DDINC $FTINC
+CPPFLAGS = $STD $INC
+CFLAGS =
+ARFLAGS = r

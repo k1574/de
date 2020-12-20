@@ -1,12 +1,12 @@
 <mkconfig
 MKSHELL = rc
 DIRS = yayacc herc sup \
-        xvvm xtrm xmen xlck xtab xlsw xgeo xsel xprp xiv xzoom\
+        `{echo x/^(wm trm men lck tab lsw geo sel prp iv zoom)}\
         goph ic plumb\
         ted sted hawk\
 	f/test f/info\
 	ff\
-        xsam xsrf # These require GCC so they get compiled last.
+        `{echo x/^(sam srf) }# These require GCC so they get compiled last.
 
 all :Q:
 
