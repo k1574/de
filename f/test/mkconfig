@@ -1,0 +1,6 @@
+<../../mkconfig
+NAME = ftest
+CPPFLAGS =
+CFLAGS = $CPPFLAGS
+LDFLAGS =
+

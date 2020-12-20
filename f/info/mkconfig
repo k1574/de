@@ -1,0 +1,6 @@
+<../../mkconfig
+NAME = finfo
+CPPFLAGS =
+CFLAGS = $CPPFLAGS
+LDFLAGS = $LD_STATIC_FLAG
+
