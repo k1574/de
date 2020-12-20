@@ -1,7 +1,7 @@
 <mkconfig
 MKSHELL = rc
 DIRS = yayacc herc sup \
-        `{echo x/^(wm trm men lck tab lsw geo sel prp iv zoom)}\
+        `{echo x/^(wm trm men lck tab lsw geo sel prp wup iv zoom)}\
         goph ic plumb\
         ted sted hawk\
 	f/test f/info\
