@@ -10,15 +10,12 @@ DIRS = yayacc herc sup \
 
 all :Q:
 
-% :QV:
+dep-% :QV: 
+	cat $DIRS^/dep/$stem | sed '/^$/d' | goblin uniq -U
+
+& :QV:
 	pwd = `{pwd}
 	for(d in $DIRS){
 		echo '(cd '$d'; mk '$target')'
 		{ builtin cd $d ; mk $MKFLAGS $stem ; builtin cd $pwd }
 	}
-
-$DIRS :QV:
-	echo '(cd '$target'; mk '$target')'
-	cd $target
-	mk $MKFLAGS $target
-	cd ..
