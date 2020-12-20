@@ -1,13 +1,11 @@
-xde
 ===
 
-xde - X desktop environment.
+de - desktop environment.
 
 Description
 -----------
 
 The package contains collection of programs that follow the DRY UNIX KISS philosophies.
-Graphical programs are supposed to be run in X environments.
 They are simple, compact and are enough for the most purposes. 
 Some of programs are slightly rewritten to be easier built and used.
 There are Plan 9 OS programs ports since they are effective and easy to use,
@@ -26,7 +24,7 @@ Everything on the list properly works when compiled with TCC unless otherwise sp
   * yayacc - yet another yacc; (yacc)
   * herc - stronger rc version. (rc)
 * Suckless
-  * xvvm - X window manager based on dwm with purpose to be more simplified;
+  * xwm - X window manager based on dwm with purpose to be more simplified;
   * xtrm - X terminal emulator based on st;
   * xmen - X menu based on dmenu;
   * xsrf - X web browser using WebKit as engine based on surf (requires GCC);
@@ -46,9 +44,9 @@ Everything on the list properly works when compiled with TCC unless otherwise sp
 Install
 -------
 
-	% git clone https://github.com/k1574/xde
-	% cd xde
-	% ./install
+	% git clone https://github.com/k1574/de
+	% cd de
+	% ./do install
 
 Every programs is installed in $HOME/exe directory because I think people
 must have the directory where they can put their own executables, since
@@ -56,11 +54,6 @@ root permission is too much for installation scripts.
 It's dangerous to install anything globally.
 Also I think people can want to change source much as I do
 so they will replace programs installed by default in the system.
-
-Run
----
-
-	% xde # From the console.
 
 Licensies
 ---------
