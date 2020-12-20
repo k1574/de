@@ -1,0 +1,12 @@
+# sup
+sup - user privilege escalation.
+# Description
+The sup program is supposed to be way more secure, fast and simple
+replacement of sudo. It's reached by in-compiled rules and the run
+politics since it can run only not writable files. Also the
+standard installation makes it unreadable, so only really
+reliable users can run the exact programs you specified.
+## Installation
+	$ vi config.h # Edit to set rules.
+	$ vi mkconfig # Set up installation for your system.
+	# mk install # Run with root privileges.

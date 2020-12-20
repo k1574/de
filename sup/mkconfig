@@ -1,0 +1,8 @@
+<../mkconfig
+NAME = sup
+EXE = $HOME/exe
+SHR = $ROOT/shr
+MAN = $SHR/man/
+CPPFLAGS = -DUID1'='`{id -u}
+CFLAGS = $CPPFLAGS
+LDFLAGS = $LD_STATIC_FLAG

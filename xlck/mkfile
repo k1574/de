@@ -5,8 +5,7 @@ HDR = `{ls *.h}
 install :V: $TGT
 	mkdir -p $MAN/1 $EXE
 	sup cp -f $TGT $EXE/
-	sup chmod 0755 $EXE/$TGT
-	sup chmod u+s $EXE/$TGT
+	sup chmod 4111 $EXE/$TGT
 	cp man $MAN/1/$NAME
 uninstall :V: 
 	rm -f $ROOT/bin/$TGT

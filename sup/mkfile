@@ -1,0 +1,14 @@
+<mkconfig
+SRC = `{ls *.c}
+HDR = `{ls *.h}
+<../mk/inc/cbuild
+clean:
+	rm -f $OBJ $TGT
+install :V: $TGT
+	mkdir -p $EXE
+	cp -f $TGT $EXE/
+	sudo chown root $EXE/$TGT
+	sudo chgrp root $EXE/$TGT
+	sudo chmod 4111 $EXE/$TGT
+uninstall :V:
+	rm -f $EXE/$TGT

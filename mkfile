@@ -1,6 +1,6 @@
 <mkconfig
 MKSHELL = rc
-DIRS = yayacc herc\
+DIRS = yayacc herc sup \
         xvvm xtrm xmen xlck xtab xlsw xgeo xsel xprp xiv xzoom\
         goph ic plumb\
         ted sted hawk\
