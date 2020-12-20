@@ -1,0 +1,8 @@
+<../mkconfig
+VERSION = 4
+SCRIPT = 2ff webp2ff
+LIB = $PNGLIB $JPGLIB
+CPPFLAGS = -D_DEFAULT_SOURCE
+CFLAGS =
+#LDFLAGS =
+

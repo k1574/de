@@ -32,6 +32,8 @@ SECINC9 = -I$PATH9/sec
 CRYPTLIB = -lcrypt
 XRLIB = -lXrandr
 CURLIB = -lcurses
+PNGLIB = -lpng
+JPGLIB = -ljpeg
 
 # Standard utilites to compile.
 CC = tcc

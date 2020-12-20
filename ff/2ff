@@ -1,0 +1,44 @@
+#!/bin/env rc
+
+switch($#*){
+	case 1
+	case 0
+		formats = (jpg jpeg png gif webp ff bz2 xz gz)
+		for(i in $formats)
+			echo $i
+		exit 0
+	case *
+		echo usage: $0 [file] >[2=1]
+		exit 1
+}
+
+if(test ! -f $1){
+	echo $0: no such file "$1">[2=1]
+	exit 1
+}
+
+file = $1
+conv = ''
+switch($file){
+	case *.jpg *.jpeg *.jpe *.JPG *.JPEG *.JPE
+		conv = jpg2ff
+	case *.png *.png
+		conv = png2ff
+	case *.gif *.GIF
+		conv = gif2ff
+	case *.webp *.WEBP
+		conv = webp2ff
+	case *.ff
+		conv = cat
+	case *.bz2 *.bz2
+		conv = (bzip2 -dc)
+	case *.gz *.GZ
+		conv = (gzip -dc)
+	case *.xz *.XZ
+		conv = (xz -dc)
+	case *
+		conv = cat
+}
+
+exec $conv < $file
+
