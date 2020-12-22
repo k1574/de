@@ -62,7 +62,7 @@ test(const char *path)
 static void
 usage(void)
 {
-	fprintf(stderr, "Usage: %s [-abcdefghlpqrsuvwx] "
+	fprintf(stderr, "Usage: %s [-aAbcdefghlpqrsuvwx] "
 	        "[-n file] [-o file] [file...]\n", argv0);
 	exit(2); /* Like test(1) return > 1 on error. */
 }
@@ -89,7 +89,7 @@ main(int argc, char *argv[])
 			perror(file);
 		break;
 	default:
-		/* miscellaneous operators */
+		/* Miscellaneous operators. */
 		if (strchr("aAbcdefghlpqrsuvwx", ARGC()))
 			FLAG(ARGC()) = 1;
 		else
