@@ -1,0 +1,6 @@
+<../../../mkconfig
+NAME = ff-info
+CPPFLAGS =
+CFLAGS = 
+LDFLAGS =
+

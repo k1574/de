@@ -1,0 +1,11 @@
+<mkconfig
+MKSHELL = rc
+DIR = info rand
+MKFLAGS =
+
+% :QV:
+	for(d in $DIR){
+		echo '(cd '$d'; mk '$target')'
+		{ builtin cd $d ; mk $MKFLAGS $stem; cd .. }
+	}
+

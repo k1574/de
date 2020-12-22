@@ -1,0 +1,6 @@
+<../../../mkconfig
+NAME = ff-rand
+CPPFLAGS =
+CFLAGS = 
+LDFLAGS =
+
