@@ -1,7 +1,7 @@
 <mkconfig
 MKSHELL = rc
 DIRS = `{echo 9/^(yacc rc)} sup \
-        `{echo x/^(plumb wm trm men lck tab lsw ptr geo sel prp wup iv zoom)} \
+        `{echo x/^(plumb wm trm men lck tab lsw ptr geo sel prp wup iv zoom pc)} \
         goph ic \
         `{echo 9/^(ed sed awk)} \
 	f/test f/info\
