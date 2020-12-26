@@ -1,8 +1,8 @@
-<../mkconfig
-NAME = ted
+<$ROOT/mkconfig
+NAME = 9ed
 SCRIPT = ed
-INC9 = -I../$PATH9
-OBJ9 = ../$PATH9/9.a
+INC9 = -I$ROOT/$PATH9
+OBJ9 = $ROOT/$PATH9/9.a
 INC = $INC9
 LIB9 = -L$PATH9 -l9
 CPPFLAGS = $INC -D_DEFAULT_SOURCE

@@ -1,6 +1,6 @@
 <mkconfig
 SRC = `{ls *.c} $OBJ9
-<../mk/inc/cbuild
+<$ROOT/mk/inc/cbuild
 clean :V:
 	rm -rf $TGT *.o
 install :V: $TGT strip

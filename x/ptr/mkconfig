@@ -1,4 +1,4 @@
-<../../mkconfig
+<$ROOT/mkconfig
 VERSION = 0.1
 NAME = xptr
 INC = $USRINC $X11INC 

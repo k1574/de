@@ -1,4 +1,4 @@
-<../../mkconfig
+<$ROOT/mkconfig
 NAME = xmen
 VERSION = 4.9
 INC = $X11INC $FTINC 

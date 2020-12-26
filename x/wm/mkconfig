@@ -1,4 +1,4 @@
-<../../mkconfig
+<$ROOT/mkconfig
 NAME = xwm
 SCRIPT = xde
 VERSION = 6.2

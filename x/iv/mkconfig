@@ -1,4 +1,4 @@
-<../../mkconfig
+<$ROOT/mkconfig
 NAME = xiv
 VERSION = 0.2
 SCRIPT = $NAME'o'

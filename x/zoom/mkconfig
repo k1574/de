@@ -1,4 +1,4 @@
-<../../mkconfig
+<$ROOT/mkconfig
 CC = tcc
 LD = $CC
 VERSION = 0.1

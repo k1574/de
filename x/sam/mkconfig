@@ -3,7 +3,7 @@ STD = -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=500
 #-std=c99
 
 # Default remote shell.
-RXPATH=/usr/bin/ssh
+RXPATH = /bin/sh
 
 # Directories to make by default.
 DIRS = libXg libframe sam samterm shr

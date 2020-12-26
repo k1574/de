@@ -1,4 +1,4 @@
-<../../mkconfig
+<$ROOT/mkconfig
 VERSION = 0.6
 NAME = xtab
 SCRIPT = xemb

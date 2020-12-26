@@ -1,8 +1,8 @@
-<../mkconfig
-NAME = herc
+<$ROOT/mkconfig
+NAME = 9rc
 SCRIPT = rc
-INC9 = -I../$PATH9
-OBJ9 = ../$PATH9/9.a
+INC9 = -I$ROOT/$PATH9
+OBJ9 = $ROOT/$PATH9/9.a
 INC = $DOTINC $INC9 $SECINC9
 LIB =
 CPPFLAGS = $INC -D_DEFAULT_SOURCE -DNAME'='\"$NAME\"
