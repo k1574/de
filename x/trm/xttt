@@ -1,2 +1,3 @@
 #!/bin/env rc
 xemb -w xtrm $*
+

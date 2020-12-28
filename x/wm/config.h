@@ -123,9 +123,9 @@ static char *rccmd[] = SHCMD( SETWMNAME("Hello, master `{whoami}") ";" \
 static char *runcmd[] = SHCMD(" eval `{echo -n | xmen -m $1 -p $prompt } ") ; /* Menu run. */
 static char *lockcmd[] = {"xlck", 0} ;
 static char *outruncmd[] = SHCMD(SETWMNAME("`{ eval `{echo -n | xmen -m $1 -p $prompt } }")) ; /* Set WM name to output of command. */
-static char *termcmd[] = {"xmux", "-txmux", "herc", "-l", 0} ; /* Terminal run. */
-static char *termtcmd[] = {"xtrm", "herc", "-l", 0} ; /* Text buffer terminal to run. */
-static char *plumbcmd[] = SHCMD("url=`{eval echo `{xsel}} ; exec  plumb $\"url") ;
+static char *termcmd[] = {"xmux", "-txmux", "rc", "-l", 0} ; /* Terminal run. */
+static char *termtcmd[] = {"xtrm", "rc", "-l", 0} ; /* Text buffer terminal to run. */
+static char *plumbcmd[] = SHCMD("url=`{eval echo `{xsel}} ; exec  xplumb $\"url") ;
 /* Keyboard layouts. */
 static const char *dvorakkbdcmd[] = SHCMD(SETWMNAME("dvorak") ";"SET_DVORAK_KB_LT ";" );
 static const char *dvpkbdcmd[] = SHCMD(SETWMNAME("dvp") ";" SET_DVP_KB_LT ";" ) ;
