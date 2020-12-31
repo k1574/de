@@ -1,5 +1,8 @@
 #!/bin/env rc
 
-files = `{goblin ls -r 100 $* | ftest -f }
+if(test $#* '!=' 0){
+	files = `{goblin ls -r 100 $* | ftest -f }
+}
+
 sam -S $files
 
