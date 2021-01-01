@@ -65,7 +65,7 @@ static const Layout layouts[] = {
 
 static char menumon[] = "0" ;
 /* Easier CMD assigning. $1 in scripts is current monitor. */
-#define SHCMD(cmd) { "/bin/env", "herc", "-l", "-c", cmd, menumon, NULL }/*)*/
+#define SHCMD(cmd) { "/bin/env", "rc", "-l", "-c", cmd, menumon, NULL }/*)*/
 
 #define XRESOURCES "$home/lib/xresources"
 #define XRESOURCES_MERGE "test -r " XRESOURCES " && xrdb -merge " XRESOURCES
