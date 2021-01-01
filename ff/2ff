@@ -4,8 +4,10 @@ switch($#*){
 	case 1
 	case 0
 		formats = (jpg jpeg png gif webp ff bz2 xz gz)
-		for(i in $formats)
+		for(i in $formats){
 			echo $i
+			echo $i | tr a-z A-Z
+		}
 		exit 0
 	case *
 		echo usage: $0 [file] >[2=1]

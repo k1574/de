@@ -24,7 +24,7 @@
 
 /* Default plumber. */
 static char *pager = "less" ;
-static char *plumber = "plumb" ;
+static char *plumber = "xplumb" ;
 
 /* Temporary directory template (must end with six 'X' characters) */
 static char tmpdir[] = "/tmp/goph-XXXXXX";
