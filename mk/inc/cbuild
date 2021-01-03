@@ -5,7 +5,7 @@ strip :V: $TGT
 	$STRIP $TGT
 $TGT : $OBJ
 	$LD -o $target $LDFLAGS $OBJ
-%.o :V: %.c
+%.o : %.c
 	$CC -c -o $target $CFLAGS $stem.c
 %.c :N: $HDR
 %.h :N:
