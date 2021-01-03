@@ -1,4 +1,4 @@
-#!/bin/env herc
+#!/bin/env rc
 # Script to run tmuxed xtrm.
 
 args = ()

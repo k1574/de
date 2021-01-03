@@ -65,7 +65,7 @@ static const Layout layouts[] = {
 
 static char menumon[] = "0" ;
 /* Easier CMD assigning. $1 in scripts is current monitor. */
-#define SHCMD(cmd) { "/bin/env", "rc", "-l", "-c", cmd, menumon, NULL }/*)*/
+#define SHCMD(cmd) { "rc", "-l", "-c", cmd, menumon, NULL }/*)*/
 
 #define XRESOURCES "$home/lib/xresources"
 #define XRESOURCES_MERGE "test -r " XRESOURCES " && xrdb -merge " XRESOURCES
@@ -112,7 +112,7 @@ static char menumon[] = "0" ;
 #define XSETROOT "xsetroot"
 #define XSETROOT_SOLID_GRAY XSETROOT " -solid '#333333'"
 
-/* It is called on "xvvm" start. */
+/* It is called on "xwm" start. */
 static char *rccmd[] = SHCMD( SETWMNAME("Hello, master `{whoami}") ";" \
 	SET_DVORAK_KB_LT ";" \
 	SET_KB_OPTIONS ";" \
@@ -127,7 +127,7 @@ static char *termcmd[] = {"xmux", "-txmux", "rc", "-l", 0} ; /* Terminal run. */
 static char *termtcmd[] = {"xtrm", "rc", "-l", 0} ; /* Text buffer terminal to run. */
 static char *plumbcmd[] = SHCMD("url=`{eval echo `{xsel}} ; exec  xplumb $\"url") ;
 /* Keyboard layouts. */
-static const char *dvorakkbdcmd[] = SHCMD(SETWMNAME("dvorak") ";"SET_DVORAK_KB_LT ";" );
+static const char *dvorakkbdcmd[] = SHCMD(SETWMNAME("dvorak") ";" SET_DVORAK_KB_LT ";" );
 static const char *dvpkbdcmd[] = SHCMD(SETWMNAME("dvp") ";" SET_DVP_KB_LT ";" ) ;
 static const char *natkbdcmd[] = SHCMD(SETWMNAME("native")";" SET_NATIVE_KB_LT ";" ) ;
 static const char *qwertykbdcmd[] = SHCMD(SETWMNAME("qwerty")";" SET_QWERTY_KB_LT ";" ) ;

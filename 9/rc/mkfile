@@ -29,10 +29,8 @@ install :V: $TGT strip
 	mkdir -p $EXE $APP/$NAME
 	cp -f $TGT $EXE/
 	chmod 0755 $EXE/$TGT
-	for i in $SCRIPT ; do
-		cp $i $EXE/
-		chmod 0755 $EXE/$i
-	done
+	rm -f $EXE/rc
+	ln -s $EXE/$TGT $EXE/rc
 	cp man $MAN/1/$NAME
 	cp -f rcmain $APP/$NAME
 uninstall :V:
