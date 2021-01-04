@@ -69,7 +69,7 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
 
 /* SETPROP(readprop, setprop, prompt)*/
 #define SETPROP(r, s, p) { \
-        .v = (const char *[]){ "/bin/env", "herc", "-c", \
+        .v = (const char *[]){ "/bin/env", "rc", "-c", \
 		"prop=`{xprp $2 $3 | xmen -w $2 -p $5}" \
 		"&& exec xprp $2 $4 $\"prop", \
              "xsrf-setprop", winid, r, s, p, NULL \
@@ -78,8 +78,8 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
 
 /* DOWNLOAD(URI, referer) */
 #define DOWNLOAD(u, r) { \
-	.v = (const char *[]){ "/bin/env", "herc", "-c",\
-		"exec xtrm `{test -z $XEMBED || echo -w $XEMBED}-t $1':'$5 -e herc -c '"\
+	.v = (const char *[]){ "/bin/env", "rc", "-c",\
+		"exec xtrm `{test -z $XEMBED || echo -w $XEMBED}-t $1':'$5 -e rc -c '"\
 			"test -z $load || {mkdir -p $load && cd $load }"\
 			"; curl -g -L -J -O -A $2 -b $3 -c $3 -e $4 $5"\
 			"; read' $*", \
@@ -93,14 +93,14 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
  * "http://" or "https://" should be opened.
  */
 #define PLUMB(u) {\
-        .v = (const char *[]){ "/bin/env", "herc", "-c", \
+        .v = (const char *[]){ "/bin/env", "rc", "-c", \
              "exec plumb $1", u, NULL \
         } \
 }
 
 /* VIDEOPLAY(URI) */
 #define VIDEOPLAY(u) {\
-        .v = (const char *[]){ "/bin/env", "herc", "-c",\
+        .v = (const char *[]){ "/bin/env", "rc", "-c",\
 		"if(test -z $XEMBED)"\
 			"exec mpv --really-quiet '--title='xsrf-video':'$1 $1;"\
 		"if not "\

@@ -1,4 +1,4 @@
-#!/bin/env herc
+#!/bin/env rc
 # The complete browser script by herc, xtab and xsrf.
 
 if(test $#* -eq 0)
