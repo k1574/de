@@ -1,6 +1,4 @@
 /* See "license" file for copyright and license details. */
-/* k1574's config. */
-/* For work requires "rc". (Can be taken from "plan9port") */
 
 /* Appearance. */
 static const unsigned int borderpx  = 1 ; /* Border pixel of windows. */
@@ -126,6 +124,7 @@ static char *outruncmd[] = SHCMD(SETWMNAME("`{ eval `{echo -n | xmen -m $1 -p $p
 static char *termcmd[] = {"xmux", "-txmux", "rc", "-l", 0} ; /* Terminal run. */
 static char *termtcmd[] = {"xtrm", "rc", "-l", 0} ; /* Text buffer terminal to run. */
 static char *plumbcmd[] = SHCMD("url=`{eval echo `{xsel}} ; exec  xplumb $\"url") ;
+
 /* Keyboard layouts. */
 static const char *dvorakkbdcmd[] = SHCMD(SETWMNAME("dvorak") ";" SET_DVORAK_KB_LT ";" );
 static const char *dvpkbdcmd[] = SHCMD(SETWMNAME("dvp") ";" SET_DVP_KB_LT ";" ) ;
@@ -140,6 +139,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, XK_r, spawn, {.v = runcmd} }, /* Run CMD. (dmenu most the time) */
 	{ MODKEY|ShiftMask, XK_c, spawn, {.v = outruncmd} }, /* Run CMD and set it's output to WMname. */
 	{ MODKEY|ShiftMask, XK_p, spawn, {.v = plumbcmd} }, /* Plumber. */
+
 	/* Clients stuff and input. (The most often used) */
 	{ MODKEY, XK_a, spawn, {.v = qwertykbdcmd} }, /* Qwerty. */
 	{ MODKEY, XK_Tab, spawn, {.v = dvorakkbdcmd} }, /* Dvorak. */
@@ -167,11 +167,13 @@ static Key keys[] = {
 	{ MODKEY, XK_space,  togglefree, {0} },  /* Change between floated and unfloated statement. */
 	{ MODKEY, XK_0, view, {.ui = ~0 } },  /* Toggle all tags. */
 	{ MODKEY|ShiftMask, XK_0, tag,  {.ui = ~0 } }, /* Move window to the next tag. */
+
 	/* Monitor things. */
 	{ MODKEY, XK_comma,  focusmon, {.i = -1 } },
 	{ MODKEY, XK_period, focusmon, {.i = +1 } },
 	{ MODKEY|ShiftMask, XK_comma,  tagmon, {.i = -1 } },
 	{ MODKEY|ShiftMask, XK_period, tagmon, {.i = +1 } },
+
 	/* Tags. */
 	{ MODKEY, XK_p, viewnext, {.i = -1} },
 	{ MODKEY, XK_n, viewnext, {.i = +1} },
@@ -184,6 +186,7 @@ static Key keys[] = {
 	TAGKEYS(XK_7, 6),
 	TAGKEYS(XK_8, 7),
 	TAGKEYS(XK_9, 8),
+
 	/* DWM hotkeys(It's rarely used, so it takes the most effort to use). */
 	{ MODKEY|ControlMask|ShiftMask, XK_l, spawn, {.v = lockcmd} },
 	{ MODKEY|ControlMask|ShiftMask, XK_Escape, quit, {0} }, /* Quit window manager. */
@@ -199,6 +202,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol, 0, Button5, nextlayout,  {.i = +1}},
 	{ ClkLtSymbol, 0, Button2, togglefree, {0} }, /* Toggle floating layout on current window. */
 	{ ClkLtSymbol, 0, Button3, zoom, {0} },
+
 	/* Master window. */
 	{ ClkStatusText, 0, Button1, setmfact, {.f = -0.05} } ,/* Decrease master window size. */
 	{ ClkStatusText, 0, Button5, setmfact, {.f = -0.01} },
@@ -212,6 +216,7 @@ static Button buttons[] = {
 	{ ClkRootWin, MODKEY|ControlMask, Button5, setmfact, {.f = -0.05} },
 	{ ClkClientWin, MODKEY|ControlMask, Button4, setmfact, {.f = +0.05} },
 	{ ClkClientWin, MODKEY|ControlMask, Button5, setmfact, {.f = -0.05} },
+
 	/* Scrolling desktop. */
 	{ ClkStatusText, 0, Button1, scrolldeskhorizontal, {.i = +300, .b = 0} },
 	{ ClkStatusText, 0, Button3, scrolldeskhorizontal, {.i = -300, .b = 0} },
@@ -225,35 +230,44 @@ static Button buttons[] = {
 	{ ClkClientWin, MODKEY|ShiftMask, Button5, scrolldeskhorizontal, {.i = -100, .b = 0} },
 	{ ClkClientWin, MODKEY|ControlMask, Button5, scrolldeskvertical, {.i = -100, .b = 0} },
 	{ ClkClientWin, MODKEY|ControlMask, Button4, scrolldeskvertical, {.i = +100, .b = 0} },
+
 	/* Changing focus. */
 	{ ClkWinTitle, 0, Button4, focusstack, {.i = +1 } }, 
 	{ ClkWinTitle, 0, Button5, focusstack, {.i = -1 } }, 
+
 	/* Calling terminals. */
 	{ ClkRootWin, 0, Button2, quit, {.i = 1 } },
 	{ ClkStatusText, 0, Button2, spawn, {.v = termtcmd } },
+
 	/* Moving window by mouse. */
 	{ ClkClientWin, MODKEY, Button1, movemouse, {0} },
 	{ ClkWinTitle, 0, Button1, moveclick, {0} },
 	/* Close current window. */
 	{ ClkClientWin, MODKEY|ShiftMask, Button2, killcurclient, {0}  },
 	{ ClkWinTitle, 0, Button2, killclick, {0}  },
+
 	/* Focus on window under cursor. */
 	{ ClkClientWin, MODKEY, Button2, focuscurwin, {0} },
+
 	/* Up window on the stack of view. */
 	{ ClkClientWin, MODKEY, Button4, raisefocused, {0} },
+
 	/* Low window on the stack of view. */
 	{ ClkClientWin, MODKEY, Button5, lowerfocused, {0} },
+
 	/* Resizing by mouse. */
 	{ ClkClientWin, MODKEY, Button3, resizemouse, {0} },
 	{ ClkWinTitle, 0, Button3, resizeclick, {0} },
+
 	/* In tiled mode choose current window as master. */
 	{ ClkClientWin, MODKEY|ControlMask, Button2, zoom, {0} },
+
 	/* Tags. */
 	{ ClkTagBar, 0, Button1, view, {0} },
 	{ ClkTagBar, 0, Button3, toggleview, {0} },
 	{ ClkTagBar, 0, Button2, tag, {0} },
 	{ ClkTagBar, MODKEY, Button2, toggletag, {0} },
-	{ ClkTagBar, 0, Button4, viewnext, {.i = +1} }, /* Scrolling through tags. */
+	{ ClkTagBar, 0, Button4, viewnext, {.i = +1} },
 	{ ClkTagBar, 0, Button5, viewnext, {.i = -1} },
 } ;
 /* Sides definition. Calls functions when touches borders of screens resizing or moving windows. */
