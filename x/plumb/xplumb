@@ -1,4 +1,4 @@
-#!/bin/env herc
+#!/bin/env rc
 # k1574's plumber.
 
 fn usage {
@@ -15,7 +15,7 @@ fn open_in_telnet_browser {
 	host_flag = `{~ $host _ || echo $host}
 	port_flag = `{~ $port _ || echo $port}
 	comm = (telnet $user_flag $host_flag $port_flag)
-	exec xmux -t $url herc -c $"comm';read' 
+	exec xmux -t $url rc -c $"comm';read' 
 }
 
 fn open_in_ftp_browser {
@@ -23,15 +23,15 @@ fn open_in_ftp_browser {
 	#host_flag = `{~ $host _ || echo $host}
 	#port_flag = `{~ $port _ || echo $port}
 	#comm  = `{echo ftp $user_flag $host_flag $port_flag}
-	exec xmux -t 'ftp:'$url herc -c 'mkdir -p $download && cd $download; ftp '$"url';read'
+	exec xmux -t 'ftp:'$url rc -c 'mkdir -p $download && cd $download; ftp '$"url';read'
 }
 
 fn open_in_http_music_player {
-	exec xmux -t 'Music Player:'$url herc -c 'mpv '$url'; read'
+	exec xmux -t 'Music Player:'$url rc -c 'mpv '$url'; read'
 }
 
 fn open_in_ssh_browser {
-	exec xmux -t 'ssh:'$url herc -c 'ssh '$url'; read'
+	exec xmux -t 'ssh:'$url rc -c 'ssh '$url'; read'
 }
 
 fn handle_local_image {
@@ -47,9 +47,9 @@ fn handle_local_text {
 }
 
 fn handle_local_dir {
-	comm = 'herc -l'
+	comm = 'rc -l'
 	cd $p; t=`{pwd}
-	exec xmux -t$"t herc -c $"comm
+	exec xmux -t$"t rc -c $"comm
 }
 
 fn plumb_local_file {
