@@ -133,9 +133,9 @@ static SearchEngine sengines[] = {
 	{  "g", "https://www.google.com/search?q=%s" },
 	{  "ddg", "https://duckduckgo.com/?q=%s"},
 	{  "y", "https://search.yahoo.com/search?p=%s"},
-	{  "wwe", "https://en.wikipedia.org/wiki/%s"},
+	{  "wpe", "https://en.wikipedia.org/wiki/%s"},
 	{  "wde", "https://en.wiktionary.org/wiki/%s"},
-	{  "wwr", "https://ru.wikipedia.org/wiki/%s"},
+	{  "wpr", "https://ru.wikipedia.org/wiki/%s"},
 	{  "wdr", "https://ru.wiktionary.org/wiki/%s"},
 } ;
 
