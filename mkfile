@@ -1,6 +1,6 @@
 <mkconfig
 MKSHELL = rc
-DIRS = `{echo 9/^(yacc rc)} sup \
+DIRS = sup \
         `{echo x/^(plumb wm trm men lck tab lsw ptr geo sel prp wup iv zoom pc)} \
         goph ic \
         `{echo 9/^(ed sed awk)} \
@@ -16,6 +16,6 @@ dep-% :QV:
 & :QV:
 	pwd = `{pwd}
 	for(d in $DIRS){
-		echo '(cd '$d'; mk '$target')'
+		echo [ cd $d ';' mk $target ]
 		{ builtin cd $d ; mk $MKFLAGS $stem ; builtin cd $pwd }
 	}
