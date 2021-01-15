@@ -1,21 +1,30 @@
 <mkconfig
+
 MKSHELL = rc
-DIRS = sup \
-        `{echo x/^(plumb wm trm men lck tab lsw ptr geo sel prp wup iv zoom pc)} \
-        goph ic \
+DIR = \
         `{echo 9/^(ed sed awk)} \
+        `{echo x/^(plumb wm trm men tab lsw ptr geo sel prp wup iv zoom pc)} \
+        goph ic \
 	f/test f/info\
 	ff\
         `{echo x/^(sam srf) }# These require GCC so they get compiled last.
 
-all :Q:
+SUDIR = sup x/lck
 
 dep-% :QV: 
 	cat $DIRS^/dep/$stem | sed '/^$/d' | goblin uniq -U
 
-& :QV:
+su/& :QV:
 	pwd = `{pwd}
-	for(d in $DIRS){
+	for(d in $SUDIR){
 		echo [ cd $d ';' mk $target ]
 		{ builtin cd $d ; mk $MKFLAGS $stem ; builtin cd $pwd }
 	}
+
+& :QV:
+	pwd = `{pwd}
+	for(d in $DIR){
+		echo [ cd $d ';' mk $target ]
+		{ builtin cd $d ; mk $MKFLAGS $stem ; builtin cd $pwd }
+	}
+
