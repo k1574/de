@@ -1,0 +1,6 @@
+CC = tcc
+LD = $CC
+NAME = des
+CPPFLAGS =
+CFLAGS = $CPPFLAGS
+LDFLAGS =
