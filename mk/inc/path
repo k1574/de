@@ -1,6 +1,0 @@
-# File to keep standard paths.
-EXE = $HOME/exe
-APP = $HOME/app
-SHR = $HOME/shr
-MAN = $SHR/man
-
