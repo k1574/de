@@ -10,8 +10,8 @@ static const char col_white[] = "#FFFFFF" ;
 static const char col_black[] = "#000000" ;
 static const char *colors[][3] = {
 	/* Foreground, background, border. */
-	[SchemeNorm] = { col_black, col_white, col_gray  },
-	[SchemeSel]  = { col_white, col_black,  col_white  },
+	[SchemeSel] = { col_black, col_white, col_white},
+	[SchemeNorm]  = { col_white, col_black,  col_gray},
 } ;
 
 /* Tagging. */
