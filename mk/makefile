@@ -21,8 +21,9 @@ ${TARG}: ${OFILES}
 	${LD} -o ${TARG} ${LDFLAGS} ${OFILES} ${LIB}
 
 install: ${TARG}
-	mkdir -p ${EXE} ${MAN}/1
-	cp -f ${TARG} ${EXE}/
+	mkdir -p ${EXE} ${MAN}/1 ${APP}/${NAME}
+	cp -f ${TARG} ${EXE}/${TARG}
 	chmod 0755 ${EXE}/${TARG}
 	cp -f man ${MAN}/1/${NAME}
 	chmod 0644 ${MAN}/1/${NAME}
+	cp -rf inc ${APP}/${NAME}

@@ -4,6 +4,7 @@ VERSION = 7
 EXE=${HOME}/exe
 SHR=${HOME}/shr
 MAN=${SHR}/man
+APP=${HOME}/app
 
 OBJTYPE     = 386
 #OBJTYPE     = arm
