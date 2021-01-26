@@ -13,7 +13,8 @@ ${LIB}: ${OFILES}
 clean:
 	rm -f ${OFILES} ${LIB}
 install: ${LIB}
-	mkdir -p ${MAN}/7
+	mkdir -p ${MAN}/7 ${SHR}/lib
 	cp -f man-regexp ${MAN}/7/regexp
 	chmod 0644 ${MAN}/7/regexp
+	cp -f ${LIB} ${SHR}/lib/
 
