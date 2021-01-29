@@ -1,7 +1,5 @@
-<$ROOT/mkconfig
+<$APP/mk/inc/config
 NAME = 9yacc
-INC9 = -I$ROOT/$PATH9
-OBJ9 = $ROOT/$PATH9/9.a
 INC = $INC9
 LIB =
 CPPFLAGS = $INC -D_DEFAULT_SOURCE '-DNAME="'$NAME'"'

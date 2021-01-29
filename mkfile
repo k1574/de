@@ -3,7 +3,7 @@
 MKSHELL = rc
 DIR = \
         `{echo 9/^(ed sed awk)} \
-        `{echo x/^(plumb wm trm men tab lsw ptr geo sel prp wup iv zoom pc)} \
+        `{echo x/^(plumb wm trm men tab lsw ptr geo sel prp wup iv zoom pc ss)} \
         goph ic \
 	f/test f/info\
 	ff\

@@ -1,8 +1,5 @@
-<$ROOT/mkconfig
-YACC = $YACC
+<$APP/mk/inc/config
 NAME = 9awk
-INC9 = -I$ROOT/$PATH9
-OBJ9 = $ROOT/$PATH9/9.a
 INC =  $DOTINC $INC9
 LIB = $MLIB
 CPPFLAGS = $INC -D_DEFAULT_SOURCE
