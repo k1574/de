@@ -1,14 +1,15 @@
-# File to keep standard paths.
-EXE = $HOME/exe
-APP = $HOME/app
-SHR = $HOME/shr
-MAN = $SHR/man
 
-# The most popular compiler configuration values for my programs.
-USR = /usr
-USRINC = -I$USR/include
-USRLIB = $USR/lib
-X11 = $USR/X11R6
+EXEDIR = $HOME/exe
+APPDIR = $HOME/app
+SHRDIR = $HOME/shr
+INCDIR = $SHR/inc
+OBJDIR = $SHR/obj
+MANDIR = $SHR/man
+
+USRDIR = /usr
+USRINC = -I$USRDIR/include
+USRLIB = -L$USRDIR/lib
+X11 = $USRDIR/X11R6
 X11INC = -I$X11/include
 X11LIB = -L$X11/lib -lX11
 XFTLIB = -lXft
@@ -33,10 +34,10 @@ CURLIB = -lcurses
 PNGLIB = -lpng
 JPGLIB = -ljpeg
 
-OBJ9 = $SHR/lib/9.a
-INC9 = -I$SHR/inc/9
+OBJ9 = $OBJDIR/9.a
+INC9 = -I$INCDIR/9
 
-# Standard utilites to compile.
+GCC = cc
 CC = tcc
 LD = $CC
 STRIP = strip

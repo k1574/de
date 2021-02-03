@@ -1,13 +1,13 @@
 <mkconfig
 SRC = `{ls *.c}
-OBJ = $OBJ $OBJ9
-<$ROOT/mk/inc/cbuild
+OBJ = $OBJ9
+<$APPDIR/mk/inc/cbuild
 clean :V:
 	rm -rf $TGT *.o
 install :V: $TGT strip
-	mkdir -p $EXE $MAN/1
-	cp -f $TGT $EXE/$TGT
-	cp -f man $MAN/1/$TGT
-	chmod 0755 $EXE/$TGT
+	mkdir -p $EXEDIR $MANDIR/1
+	cp -f $TGT $EXEDIR/$TGT
+	cp -f man $MANDIR/1/$TGT
+	chmod 0755 $EXEDIR/$TGT
 uninstall :V:
-	rm -f $EXE/$TGT
+	rm -f $EXEDIR/$TGT

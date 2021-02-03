@@ -1,37 +1,35 @@
 <mkconfig
 MKSHELL = sh
 SYN = syn.y
-HDR = `{ls *.h}
-SRC = code.c exec.c getflags.c glob.c here.c io.c lex.c \
+HFILES = `{ls *.h}
+CFILES = code.c exec.c getflags.c glob.c here.c io.c lex.c \
 	pcmd.c pfnc.c simple.c subr.c trap.c tree.c unixcrap.c \
-	var.c y.tab.c plan9ish.c havefork.c $OBJ9
-OBJ = ${SRC:%.c=%.o}
-TGT = $NAME
-all :Q: $TGT 
-	echo -n
-strip :V: $TGT
-	$STRIP $TGT
-$TGT : x.tab.h $OBJ
-	$LD -o $target $LDFLAGS $OBJ
-%.o :V: %.c
+	var.c y.tab.c plan9ish.c havefork.c
+OFILES = ${CFILES:%.c=%.o} $OBJ9
+TARG = $PROGNAME
+all :V: $TARG
+strip :V: $TARG
+	$STRIP $TARG
+$TARG : x.tab.h $OFILES
+	$LD -o $target $LDFLAGS $OFILES
+%.o : %.c
 	$CC -c -o $target $CPPFLAGS $CFLAGS $stem.c
-%.c :Q: $HDR x.tab.h
+%.c :NQ: $HDR x.tab.h
 	touch $target
-%.h :Q:
-	touch $target
+%.h :NQ:
 x.tab.h: y.tab.h
 	cp y.tab.h x.tab.h
 y.tab.h: $SYN
 	$YACC -d $SYN
 clean :V:
-	rm -rf $TGT *.o y.tab.c y.tab.h x.tab.h
-install :V: $TGT strip
-	mkdir -p $EXE $APP/$NAME
-	cp -f $TGT $EXE/
-	chmod 0755 $EXE/$TGT
-	rm -f $EXE/rc
-	ln -s $EXE/$TGT $EXE/rc
-	cp man $MAN/1/$NAME
-	cp -f rcmain $APP/$NAME
+	rm -rf $TARG *.o y.tab.c y.tab.h x.tab.h
+install :V: $TARG strip
+	mkdir -p $EXEDIR $APPDIR/$PROGNAME
+	cp -f $TARG $EXEDIR/
+	chmod 0755 $EXEDIR/$TARG
+	rm -f $EXEDIR/rc
+	ln -s $EXEDIR/$TARG $EXEDIR/rc
+	cp man $MANDIR/1/$PROGNAME
+	cp -f rcmain $APPDIR/$PROGNAME
 uninstall :V:
-	rm -f $EXE/$TGT
+	rm -f $EXEDIR/$TARG

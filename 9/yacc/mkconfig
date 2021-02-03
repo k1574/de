@@ -1,4 +1,4 @@
-<$APP/mk/inc/config
+<$HOME/app/mk/inc/config
 NAME = 9yacc
 INC = $INC9
 LIB =

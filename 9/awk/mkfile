@@ -1,16 +1,18 @@
 <mkconfig
+
 SYN = awkgram.y
 HDR = awk.h proto.h
 SRC = lex.c lib.c main.c parse.c proctab.c re.c run.c tran.c y.tab.c $OBJ9
 OBJ = ${SRC:%.c=%.o}
-TGT = $NAME
+TGT = $PROGNAME
+
 all :V: $TGT
 strip :V: $TGT
 	$STRIP $TGT
 $TGT : $OBJ y.tab.o
 	$LD -o $target $LDFLAGS $OBJ
 %.o :V: %.c
-	$CC -c -o $target $CFLAGS $stem.c
+	$CC -c -o $target $CPPFLAGS $CFLAGS $stem.c
 $SRC :N: $HDR x.tab.h
 $HDR :N:
 x.tab.h : y.tab.h
@@ -20,10 +22,10 @@ y.tab.h y.tab.c : $SYN
 clean :V:
 	rm -rf $TGT *.o y.tab.c y.tab.h x.tab.h
 install :V: $TGT strip
-	mkdir -p $EXE $HOME/lib
-	cp -f $TGT $EXE/
-	chmod 0755 $EXE/$TGT
-	cp man $MAN/1/$NAME
+	mkdir -p $EXEDIR
+	cp -f $TGT $EXEDIR/
+	chmod 0755 $EXEDIR/$TGT
+	cp man $MANDIR/1/$PROGNAME
 uninstall :V:
 	rm -f $EXE/$TGT
 

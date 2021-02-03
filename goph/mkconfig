@@ -1,6 +1,4 @@
-<../mk/inc/path
-<../mk/inc/util
-<../mk/inc/inclib
+<$HOME/app/mk/inc/config
 NAME = goph
 LIB = $CURLIB
 CPPFLAGS = -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700\
