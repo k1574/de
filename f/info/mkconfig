@@ -1,6 +1,5 @@
-<../../mkconfig
-NAME = finfo
-CPPFLAGS =
-CFLAGS = $CPPFLAGS
+<$HOME/app/mk/inc/config
+PROGNAME = finfo
 LDFLAGS = $LD_STATIC_FLAG
+CFILES = main.c
 

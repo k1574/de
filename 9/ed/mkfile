@@ -1,26 +1,2 @@
 <mkconfig
-
-MKSHELL = rc
-#HDR = `{ls *.h}
-SRC = `{ls *.c}
-OBJ = ${SRC:%.c=%.o} $OBJ9
-TGT = $NAME
-
-all :V: $TGT 
-strip :V: $TGT
-	$STRIP $TGT
-$TGT : $OBJ
-	$LD -o $target $LDFLAGS $OBJ
-%.o :V: %.c
-	$CC -c -o $target $CPPFLAGS $CFLAGS $stem.c
-%.c :QN: $HDR
-%.h :QN:
-clean :V:
-	rm -rf $TGT *.o
-install :V: $TGT strip
-	mkdir -p $EXEDIR $MANDIR/1
-	cp -f $TGT $SCRIPT $EXEDIR/
-	cp -f man $MANDIR/1/$TGT
-	chmod 0755 $EXEDIR/^($TGT $SCRIPT)
-uninstall :V:
-	rm -f $EXEDIR/$TGT
+<$MKINCDIR/cbuild

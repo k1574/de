@@ -21,6 +21,8 @@ void badusage(void);
 short buf[10000];
 #endif
 
+static char incdir[256];
+
 int
 main(int argc, char **argv)
 {
@@ -187,6 +189,15 @@ main(int argc, char **argv)
 		argv++;
 
 	catchnotes();
+	/*char *str = getapproot() ;
+	puts("before");
+	puts(str);
+	strncpy(incdir, getapproot(), sizeof(incdir)-1);
+	puts(incdir);
+	strncat(incdir, "/" PROGNAME, sizeof(incdir)-1);
+	puts(incdir);
+	setvar("MKINCDIR", incdir);
+	*/
 	if(*argv == 0){
 		if(target1)
 			for(w = target1; w; w = w->next)
@@ -234,7 +245,7 @@ void
 badusage(void)
 {
 
-	fprint(2, "Usage: mk [-f file] [-n] [-a] [-e] [-t] [-k] [-i] [-d[egp]] [targets ...]\n");
+	fprint(2, "usage: mk [-f file] [-n] [-a] [-e] [-t] [-k] [-i] [-d[egp]] [targets ...]\n");
 	Exit();
 }
 

@@ -26,7 +26,7 @@
 #define	YYMAXDEPTH	500
 #ifndef PAREN
 #ifndef YYMAJOR
-#include "x.tab.h"
+#include "y.tab.h"
 #endif
 #endif
 

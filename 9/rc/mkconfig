@@ -2,7 +2,16 @@
 PROGNAME = 9rc
 SCRIPT = rc
 INCS = $DOTINC $INC9
-CPPFLAGS = $INCS -D_DEFAULT_SOURCE -DNAME'='\"$NAME\"
+CPPFLAGS =
+DEFS = -D_DEFAULT_SOURCE -DNAME'='\"$PROGNAME\"
 CFLAGS = $CPPFLAGS
 LDFLAGS = $LD_STATIC_FLAG
-
+MKSHELL = sh
+YFILES = syn.y
+HFILES = `{ls *.h}
+YHFILES = y.tab.h
+YCFILES = y.tab.c
+CFILES = code.c exec.c getflags.c glob.c here.c io.c lex.c \
+	pcmd.c pfnc.c simple.c subr.c trap.c tree.c unixcrap.c \
+	var.c plan9ish.c havefork.c
+AFILES = $OBJDIR/9.a

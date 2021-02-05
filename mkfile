@@ -1,13 +1,13 @@
-<mkconfig
+<$HOME/app/mk/inc/config
 
 MKSHELL = rc
 DIR = \
-        `{echo 9/^(ed sed awk)} \
+        `{echo 9/^(rc ed sed awk)} \
         `{echo x/^(plumb wm trm men tab lsw ptr geo sel prp wup iv zoom pc ss)} \
         goph ic \
 	f/test f/info\
-	ff\
-        `{echo x/^(sam srf) }# These require GCC so they get compiled last.
+	#ff\
+        # `{echo x/^(sam srf) }# These require GCC so they get compiled last.
 
 SUDIR = sup x/lck
 

@@ -4,7 +4,7 @@ all:VQ:
 	echo -n
 install:V:
 	for(i in $NAME){
-		cp $i $EXE/$i
-		chmod 0755 $EXE/$i
+		cp $i $EXEDIR/$i
+		chmod 0755 $EXEDIR/$i
 	}
 

@@ -1,13 +1,2 @@
 <mkconfig
-SRC = `{ls *.c}
-OBJ = $OBJ9
-<$APPDIR/mk/inc/cbuild
-clean :V:
-	rm -rf $TGT *.o
-install :V: $TGT strip
-	mkdir -p $EXEDIR $MANDIR/1
-	cp -f $TGT $EXEDIR/$TGT
-	cp -f man $MANDIR/1/$TGT
-	chmod 0755 $EXEDIR/$TGT
-uninstall :V:
-	rm -f $EXEDIR/$TGT
+<$MKINCDIR/cbuild

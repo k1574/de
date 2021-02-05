@@ -1,9 +1,9 @@
-MKSHELL=$PLAN9/bin/rc
+MKSHELL=rc
 use-rc:V:
 	for(i in a b c)
 		echo $i
 
-MKSHELL=/bin/sh
+MKSHELL=sh
 use-sh:V:
 	for i in a b c
 	do

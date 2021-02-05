@@ -1,5 +1,4 @@
 <mkconfig
-<$ROOT/mk/inc/script
+<$MKINCDIR/script
 clean:VQ:
 	echo -n
-

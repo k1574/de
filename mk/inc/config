@@ -1,10 +1,12 @@
-
+# Main configuration file.
 EXEDIR = $HOME/exe
 APPDIR = $HOME/app
 SHRDIR = $HOME/shr
-INCDIR = $SHR/inc
-OBJDIR = $SHR/obj
-MANDIR = $SHR/man
+INCDIR = $SHRDIR/inc
+MKINCDIR = $APPDIR/mk/inc
+OBJDIR = $SHRDIR/obj
+MANDIR = $SHRDIR/man
+INSTALLDIRS = $OBJDIR $MANDIR $EXEDIR $INCDIR $APPDIR
 
 USRDIR = /usr
 USRINC = -I$USRDIR/include

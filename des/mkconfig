@@ -1,6 +1,3 @@
-CC = tcc
-LD = $CC
-NAME = des
-CPPFLAGS =
-CFLAGS = $CPPFLAGS
-LDFLAGS =
+<$HOME/app/mk/inc/config
+PROGNAME = des
+CFILES = `{ls *.c}

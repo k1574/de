@@ -1,12 +1,22 @@
-OBJ = ${SRC:%.c=%.o} $OBJ
-TGT = $NAME
-all :V: $TGT
-strip :V: $TGT
-	$STRIP $TGT
-$TGT : $OBJ
-	$LD -o $target $LDFLAGS $OBJ
-%.o : %.c
+# Universal powerful simple C build file.
+OFILES = ${CFILES:%.c=%.o}
+TARG = $PROGNAME
+CFLAGS = $CPPFLAGS $DEFS $INCS $CFLAGS  
+all :V: $TARG
+strip :V: $TARG.strip
+$TARG.strip : $TARG
+	cp -f $TARG $target
+	$STRIP $target
+$TARG : $OFILES
+	$LD -o $target $LDFLAGS $OFILES $AFILES $LIBS
+%.o : %.c $HFILES
 	$CC -c -o $target $CFLAGS $stem.c
-%.c :N: $HDR
-%.h :N:
-
+install:V: $EXEDIR/$TARG
+$EXEDIR/$TARG : $TARG.strip $EXEDIR
+	cp -f $TARG.strip $EXEDIR/$TARG
+$INSTALLDIRS :
+	mkdir -p $target
+clean:V:
+	rm -f $TARG $TARG.strip $OFILES
+uninstall:V:
+	rm -f $EXEDIR/$TARG

@@ -1,36 +1,29 @@
-NAME = mk
+PROGNAME = mk
 VERSION = 7
 
-EXE=${HOME}/exe
-SHR=${HOME}/shr
-MAN=${SHR}/man
-APP=${HOME}/app
+EXEDIR=${HOME}/exe
+SHRDIR=${HOME}/shr
+INCDIR=${SHRDIR}/inc
+OBJDIR=${SHRDIR}/obj
+MANDIR=${SHRDIR}/man
+APPDIR=${HOME}/app
 
 OBJTYPE     = 386
 #OBJTYPE     = arm
 #OBJTYPE     = x86_64
 #OBJTYPE     = sun4u
 
-# It's required to compile. Mostly you can just clone both repos in one directory and compile "mk"
-# without changing anything here.
-PATH9 = ../lib/9
-
 CC = tcc
 LD = ${CC}
 STRIP = strip
 
-# Do not edit after this line if you don't understand what you are doing.
 DOTINC = -I.
-INC9 = -I${PATH9}/ -I${PATH9}/sec
-
+INC9 = -I${INCDIR}/9
 MLIB = -lm
-OBJ9 = ${PATH9}/9.a
+OBJ9 = ${OBJDIR}/9.a
 
-INC = ${DOTINC} ${INC9}
-LIB = ${LIB9} ${MLIB}
-
-CPPFLAGS = ${INC} -DPLAN9PORT \
-	-D_DEFAULT_SOURCE
-CFLAGS =
+DEFS = -DPLAN9PORT -D_DEFAULT_SOURCE -DPROGNAME=\"${PROGNAME}\"
+INCS = ${DOTINC} ${INC9}
+LIBS = ${MLIB}
 LDFLAGS  = ${LD_STATIC_FLAG}
 

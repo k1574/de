@@ -1,14 +1,3 @@
 <mkconfig
-SRC = `{ls *.c}
-HDR = `{ls *.h}
-<../mk/inc/cbuild
-clean :V:
-	rm -rf $TGT *.o
-install :V: $TGT
-	mkdir -p $EXE $MAN/1
-	cp -f $TGT $EXE/
-	chmod 0755 $EXE/$TGT
-	cp man $MAN/1/$TGT
-	chmod 0644 $MAN/1/$TGT
-uninstall :V:
-	rm -f $EXE/$TGT $MAN/1/$NAME
+<$MKINCDIR/cbuild
+
